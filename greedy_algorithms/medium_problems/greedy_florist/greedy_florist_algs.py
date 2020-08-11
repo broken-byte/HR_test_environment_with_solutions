@@ -1,16 +1,26 @@
+from math import ceil
 
-from .models.BruteForceGreedyFlorist import BruteForceGreedyFlorist
+from .models.GreedyFlowerShop import GreedyFlowerShop
+from .models.Friend import Friend
 
 
 def get_minimum_cost_brute_force_approach(k: int, c: list) -> int:
-    florist_shop: BruteForceGreedyFlorist = BruteForceGreedyFlorist(k, c)
+    greedy_flower_shop: GreedyFlowerShop = GreedyFlowerShop(k, c)
+    friends: list = create_friend_list_of_size(k)
+    number_of_friend_passes: int = ceil(len(c) / k)
 
-    for _ in range(florist_shop.number_of_times_friends_need_to_go_through_buy_cycle):  # O(c)
-        for friend in florist_shop.friends:  # O(k)
-            florist_shop.buy__most_expensive_flower_with(friend)
-            florist_shop.remove_most_expensive_flower_price()
+    for _ in range(number_of_friend_passes):  # O(c/k)
+        for friend in friends:  # O(k)
+            greedy_flower_shop.buy_most_expensive_flower_with(customer=friend)
+            greedy_flower_shop.remove_most_expensive_flower()
 
-            if florist_shop.flower_prices_is_empty():
-                return florist_shop.total
+            if greedy_flower_shop.flower_prices_is_empty():
+                return greedy_flower_shop.total
 
 
+def create_friend_list_of_size(k: int):
+    friends: list = []
+    for _ in range(k):
+        friend: Friend = Friend()
+        friends.append(friend)
+    return friends

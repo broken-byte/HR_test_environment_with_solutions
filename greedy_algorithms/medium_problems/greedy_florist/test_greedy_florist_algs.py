@@ -4,9 +4,9 @@ from .greedy_florist_algs import get_minimum_cost_brute_force_approach
 from test_utilities.test_variables import console_break_line
 
 
-class GreedyFloristAlgsTester(TestCase):
+class GreedyFloristTester(TestCase):
 
-    functionalityTests: dict = {
+    functionality_test_data: dict = {
         "test_0": {
             "Number of Friends": 3,
             "Flower Cost Array": [2, 5, 6],
@@ -28,20 +28,54 @@ class GreedyFloristAlgsTester(TestCase):
             "expected": 11
         }
     }
-        
-    def testBruteForceApproach(self):
-        print("\nBrute Force Functionality Tests\n", console_break_line)
-        for testName, testData in self.functionalityTests.items():
-            try:
-                k: int = testData["Number of Friends"]
-                c: list = testData["Flower Cost Array"]
-                expected: int = testData["expected"]
-                actual: int = get_minimum_cost_brute_force_approach(k, c)
-                print(testName, testData, actual, "\n")
-                self.assertEqual(expected, actual)
 
-            except AssertionError as error:
-                print(error)
+    def test_functionality_0(self):
+        test_data = self.get_functionality_test_data("test_0")
+        k: int = test_data["Number of Friends"]
+        c: list = test_data["Flower Cost Array"]
+
+        expected: int = test_data["expected"]
+        actual: int = get_minimum_cost_brute_force_approach(k, c)
+
+        print(test_data, actual, "\n")
+        self.assertEqual(expected, actual)
+
+    def test_functionality_1(self):
+        test_data = self.get_functionality_test_data("test_1")
+        k: int = test_data["Number of Friends"]
+        c: list = test_data["Flower Cost Array"]
+
+        expected: int = test_data["expected"]
+        actual: int = get_minimum_cost_brute_force_approach(k, c)
+
+        print(test_data, actual, "\n")
+        self.assertEqual(expected, actual)
+
+    def test_functionality_2(self):
+        test_data = self.get_functionality_test_data("test_2")
+        k: int = test_data["Number of Friends"]
+        c: list = test_data["Flower Cost Array"]
+
+        expected: int = test_data["expected"]
+        actual: int = get_minimum_cost_brute_force_approach(k, c)
+
+        print(test_data, actual, "\n")
+        self.assertEqual(expected, actual)
+
+    def test_functionality_3(self):
+        test_data = self.get_functionality_test_data("test_3")
+        k: int = test_data["Number of Friends"]
+        c: list = test_data["Flower Cost Array"]
+
+        expected: int = test_data["expected"]
+        actual: int = get_minimum_cost_brute_force_approach(k, c)
+
+        print(test_data, actual, "\n")
+        self.assertEqual(expected, actual)
+
+    def get_functionality_test_data(self, test_name: str) -> dict:
+        functionality_test_data: dict = self.functionality_test_data[test_name]
+        return functionality_test_data
 
 
 if __name__ == "__main__":
