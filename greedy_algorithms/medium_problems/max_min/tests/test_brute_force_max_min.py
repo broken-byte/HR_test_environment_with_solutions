@@ -1,7 +1,7 @@
 from unittest import TestCase, skip, main
 import os
 
-from ..max_min_algs import max_min_brute_force_approach
+from greedy_algorithms.medium_problems.max_min.max_min_algs import max_min_brute_force_approach
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"

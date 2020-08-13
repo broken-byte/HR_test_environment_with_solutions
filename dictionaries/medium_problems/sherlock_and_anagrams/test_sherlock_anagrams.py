@@ -1,6 +1,6 @@
 import unittest
 
-from .sherlock_and_anagrams import getAllAnagramPairsIn
+from dictionaries.medium_problems.sherlock_and_anagrams.sherlock_and_anagrams import getAllAnagramPairsIn
 
 
 class TestSherlockAndAnagrams(unittest.TestCase):

@@ -1,5 +1,4 @@
 from itertools import permutations
-import sys
 
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInterLeaver import StringInterLeaver
 
