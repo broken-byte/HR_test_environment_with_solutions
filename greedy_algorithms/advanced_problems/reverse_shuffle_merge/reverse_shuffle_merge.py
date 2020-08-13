@@ -1,5 +1,5 @@
 from itertools import permutations
-import itertools
+from .classes.StringInterleaver import StringInterLeaver
 
 
 def brute_force_reverse_shuffle_merge(s: str) -> str:
@@ -16,22 +16,17 @@ def shuffle(a: str) -> list:
 
 
 def merge(a1: str, a2: str) -> list:
-    pass
+    inter_leaver: StringInterLeaver = StringInterLeaver(a1, a2)
+    return inter_leaver.get_all_possible_inter_leaves()
 
 
-def in_order_combinations(*lists):
-    lists = list(filter(len, lists))
-
-    if len(lists) == 0:
-        yield []
-
-    for lst in lists:
-        element = lst.pop()
-        for combination in in_order_combinations(*lists):
-            yield combination + [element]
-        lst.append(element)
+def main():
+    print(merge("123", "ab"))
+    path = Path("reverse_shuffle_merge.py")
+    print(path.parent)
 
 
 if __name__ == "__main__":
-    for combo in in_order_combinations(['a', 'b'], [1, 2, 3]):
-        print(''.join(map(str, combo)))
+    main()
+
+

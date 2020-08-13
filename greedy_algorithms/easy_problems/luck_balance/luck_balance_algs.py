@@ -1,6 +1,4 @@
 
-# *TODO: Optimize to meet time complexity requirements
-
 
 def getMaxLuckBalanceBruteForceApproach(lossLimit: int, contests: list) -> int:
     importantLuck, unimportantLuck = filterContestsIntoTwoLists(contests)
