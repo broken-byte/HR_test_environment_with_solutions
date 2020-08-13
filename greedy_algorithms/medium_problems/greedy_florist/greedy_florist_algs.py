@@ -1,7 +1,7 @@
 from math import ceil
 
-from .models.GreedyFlowerShop import GreedyFlowerShop
-from .models.Friend import Friend
+from greedy_algorithms.medium_problems.greedy_florist.classes.Friend import Friend
+from greedy_algorithms.medium_problems.greedy_florist.classes.GreedyFlowerShop import GreedyFlowerShop
 
 
 def get_minimum_cost_brute_force_approach(k: int, c: list) -> int:

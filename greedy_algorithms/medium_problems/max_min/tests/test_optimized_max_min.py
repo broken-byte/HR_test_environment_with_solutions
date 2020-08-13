@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 import os
 
-from ..max_min_algs import max_min_optimized
+from greedy_algorithms.medium_problems.max_min.max_min_algs import max_min_optimized
 from test_utilities.time_complexity_test_functions import process_test_file_where_lines_are_int_elements
 from test_utilities.time_complexity_test_functions import get_console_time_logged_result_of
 

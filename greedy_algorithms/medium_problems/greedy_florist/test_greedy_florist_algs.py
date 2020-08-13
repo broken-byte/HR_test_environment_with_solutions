@@ -1,7 +1,6 @@
 from unittest import TestCase, skip, main
 
-from .greedy_florist_algs import get_minimum_cost_brute_force_approach
-from test_utilities.test_variables import console_break_line
+from greedy_algorithms.medium_problems.greedy_florist.greedy_florist_algs import get_minimum_cost_brute_force_approach
 
 
 class GreedyFloristTester(TestCase):

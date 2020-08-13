@@ -1,5 +1,7 @@
 from itertools import permutations
-from .classes.StringInterleaver import StringInterLeaver
+import sys
+
+from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInterLeaver import StringInterLeaver
 
 
 def brute_force_reverse_shuffle_merge(s: str) -> str:
@@ -21,9 +23,7 @@ def merge(a1: str, a2: str) -> list:
 
 
 def main():
-    print(merge("123", "ab"))
-    path = Path("reverse_shuffle_merge.py")
-    print(path.parent)
+    pass
 
 
 if __name__ == "__main__":
