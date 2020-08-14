@@ -6,7 +6,6 @@ from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInt
 def brute_force_reverse_shuffle_merge(s: str) -> str:
     pass
 
-
 def reverse(a: str) -> str:
     return a[::-1]
 
@@ -20,6 +19,19 @@ def shuffle(a: str) -> list:
 def merge(a1: str, a2: str) -> list:
     inter_leaver: StringInterLeaver = StringInterLeaver(a1, a2)
     return inter_leaver.get_all_possible_inter_leaves()
+
+
+def get_all_possible_string_bisections(s: str) -> list:
+    length_of_s: int = len(s)
+    bisections: list = []
+
+    for index in range(length_of_s):
+        left: str = s[:index]
+        right: str = s[index:]
+        bisection: list = [left, right]
+        bisections.append(bisection)
+
+    return bisections
 
 
 def main():
