@@ -13,6 +13,7 @@ def reverse(a: str) -> str:
 
 def shuffle(a: str) -> list:
     permutations_of_a: list = list(permutations(a, len(a)))
+    permutations_of_a: list = ["".join(permutation) for permutation in permutations_of_a]
     return permutations_of_a
 
 

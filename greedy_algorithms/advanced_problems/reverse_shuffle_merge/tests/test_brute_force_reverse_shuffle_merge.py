@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 import os
 
-from ..reverse_shuffle_merge import brute_force_reverse_shuffle_merge
+from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import brute_force_reverse_shuffle_merge
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"
