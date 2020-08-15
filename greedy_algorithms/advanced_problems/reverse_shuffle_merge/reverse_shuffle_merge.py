@@ -2,9 +2,19 @@ from itertools import permutations
 
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInterLeaver import StringInterLeaver
 
+# TODO: Create a valid A checker function test, THEN create a valid A checker
 
 def brute_force_reverse_shuffle_merge(s: str) -> str:
-    pass
+    # Bisection of s
+    bisection: tuple = get_bisections(s)
+    # Path 1:
+    s_1: str = bisection[0]
+    s_2: str = bisection[1]
+    a_1: str = reverse(s_1)
+    a_2: str = reverse(s_2)
+    print(a_1, shuffle(a_1))
+    print(a_2, shuffle(a_2))
+
 
 def reverse(a: str) -> str:
     return a[::-1]
@@ -29,13 +39,22 @@ def get_all_possible_string_bisections(s: str) -> list:
         left: str = s[:index]
         right: str = s[index:]
         bisection: list = [left, right]
-        bisections.append(bisection)
+        if len(left) != 0 and len(right) != 0:
+            bisections.append(bisection)
 
     return bisections
 
 
+def get_bisections(s: str) -> tuple:
+    middle_index: int = int(len(s) / 2)
+    left: str = s[:middle_index]
+    right: str = s[middle_index:]
+    return left, right
+
+
 def main():
-    pass
+    brute_force_reverse_shuffle_merge("eggegg")
+    print(shuffle("egg"))
 
 
 if __name__ == "__main__":
