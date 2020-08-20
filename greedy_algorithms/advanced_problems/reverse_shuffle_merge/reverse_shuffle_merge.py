@@ -3,8 +3,6 @@ from collections import Counter
 
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInterLeaver import StringInterLeaver
 
-# TODO: Figure out your own solution from the user submitted one below
-
 
 def reverse_shuffle_merge(s):
     char_count = Counter(s)
