@@ -1,13 +1,13 @@
 from unittest import TestCase, main
 import os
 
-from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import brute_force_reverse_shuffle_merge
+from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import reverse_shuffle_merge
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"
 
 
-class BruteForceReverseShuffleMergeTester(TestCase):
+class ReverseShuffleMergeTester(TestCase):
 
     functionality_test_data: dict = {
         "test_0": {
@@ -33,7 +33,7 @@ class BruteForceReverseShuffleMergeTester(TestCase):
         s: str = test_data["s"]
 
         expected: int = test_data["expected"]
-        actual: str = brute_force_reverse_shuffle_merge(s)
+        actual: str = reverse_shuffle_merge(s)
 
         print(test_data, actual, "\n")
         self.assertEqual(expected, actual)
@@ -43,7 +43,7 @@ class BruteForceReverseShuffleMergeTester(TestCase):
         s: str = test_data["s"]
 
         expected: int = test_data["expected"]
-        actual: str = brute_force_reverse_shuffle_merge(s)
+        actual: str = reverse_shuffle_merge(s)
 
         print(test_data, actual, "\n")
         self.assertEqual(expected, actual)
@@ -53,7 +53,7 @@ class BruteForceReverseShuffleMergeTester(TestCase):
         s: str = test_data["s"]
 
         expected: int = test_data["expected"]
-        actual: str = brute_force_reverse_shuffle_merge(s)
+        actual: str = reverse_shuffle_merge(s)
 
         print(test_data, actual, "\n")
         self.assertEqual(expected, actual)
@@ -63,7 +63,7 @@ class BruteForceReverseShuffleMergeTester(TestCase):
         s: str = test_data["s"]
 
         expected: int = test_data["expected"]
-        actual: str = brute_force_reverse_shuffle_merge(s)
+        actual: str = reverse_shuffle_merge(s)
 
         print(test_data, actual, "\n")
         self.assertEqual(expected, actual)

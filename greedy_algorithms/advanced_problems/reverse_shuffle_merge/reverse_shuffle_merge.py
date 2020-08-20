@@ -1,19 +1,73 @@
 from itertools import permutations
+from collections import Counter
 
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.classes.StringInterLeaver import StringInterLeaver
 
-# TODO: Create a valid A checker function test, THEN create a valid A checker
+# TODO: Figure out your own solution from the user submitted one below
+
+
+def reverse_shuffle_merge(s):
+    char_count = Counter(s)
+    string_chars = {
+        char: int(count / 2) for char, count in char_count.items()
+    }
+    shuffled_chars = {
+        char: int(count / 2) for char, count in char_count.items()
+    }
+    result_string: list = []
+
+    for char in reversed(s):
+        current_char_count: int = string_chars[char]
+
+        if character_count_not_empty(current_char_count):
+
+            while (string_not_empty(result_string) and
+                   character_is_lexigraphically_larger(result_string[-1], char) and
+                   character_count_not_empty(shuffled_chars[result_string[-1]])):
+
+                removed = result_string.pop()
+                string_chars[removed] += 1
+                shuffled_chars[removed] -= 1
+
+            result_string.append(char)
+            string_chars[char] -= 1
+        else:
+            shuffled_chars[char] -= 1
+
+    return ''.join(result_string)
+
+
+def character_count_not_empty(char_count: int) -> bool:
+    return char_count > 0
+
+
+def character_is_lexigraphically_larger(char1: str, char2: str) -> bool:
+    return char1 > char2
+
+
+def string_not_empty(string: list) -> bool:
+    return len(string) > 0
+
 
 def brute_force_reverse_shuffle_merge(s: str) -> str:
-    # Bisection of s
-    bisection: tuple = get_bisections(s)
-    # Path 1:
-    s_1: str = bisection[0]
-    s_2: str = bisection[1]
-    a_1: str = reverse(s_1)
-    a_2: str = reverse(s_2)
-    print(a_1, shuffle(a_1))
-    print(a_2, shuffle(a_2))
+    # Get char counts of s
+    s_counts: dict = Counter(s)
+    # Get char counts that must be in A
+    a_counts = {
+        char: int(count / 2) for char, count in s_counts.items()
+    }
+    # convert a_counts into a string
+    a_counts_as_string: str = ""
+    for char, count in a_counts.items():
+        for _ in range(count):
+            a_counts_as_string += char
+
+    # get all permutations of a_counts_as_string
+    permutations_of_a: list = list(permutations(a_counts_as_string, len(a_counts_as_string)))
+    string_permutations_of_a: list = ["".join(permutation) for permutation in permutations_of_a]
+    # Get the minimum
+    lexigraphically_smallest_a: str = min(string_permutations_of_a)
+    return lexigraphically_smallest_a
 
 
 def reverse(a: str) -> str:
@@ -54,7 +108,6 @@ def get_bisections(s: str) -> tuple:
 
 def main():
     brute_force_reverse_shuffle_merge("eggegg")
-    print(shuffle("egg"))
 
 
 if __name__ == "__main__":
