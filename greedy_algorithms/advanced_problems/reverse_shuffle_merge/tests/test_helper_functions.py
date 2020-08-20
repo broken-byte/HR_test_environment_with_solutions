@@ -6,7 +6,6 @@ from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_m
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import merge
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import get_all_possible_string_bisections
 from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import get_bisections
-from greedy_algorithms.advanced_problems.reverse_shuffle_merge.reverse_shuffle_merge import is_valid
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"
