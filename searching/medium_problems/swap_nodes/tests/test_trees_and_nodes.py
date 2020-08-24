@@ -1,14 +1,12 @@
 from unittest import TestCase, main
-import os
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
 from searching.medium_problems.swap_nodes.classes.Tree import Tree
 
-current_path = os.path.dirname(__file__)
-test_resources_path = current_path + "/test_resources/"
 
+class TreeTester(TestCase):
 
-class TreeAndNodeTester(TestCase):
+    node_checker_path: list = []
 
     def test_tree_should_have_a_root_with_data_of_1(self):
         tree: Tree = Tree()
@@ -23,6 +21,20 @@ class TreeAndNodeTester(TestCase):
         self.assertEqual(expected_data, actual_data)
 
     def test_that_tree_can_construct_given_indices(self):
+        self.node_checker_path.clear()
+        tree: Tree = Tree()
+        indices: list = [
+            [2, 3],
+            [-1, -1],
+            [-1, -1]
+        ]
+        tree.construct_with(indices)
+        expected: list = [1, 2, 3]
+        self.node_checker(tree.root)
+        actual: list = self.node_checker_path
+        self.assertEqual(expected, actual)
+
+    def test_that_tree_can_traverse_in_order_given_indices(self):
         tree: Tree = Tree()
         indices: list = [
                 [2, 3],
@@ -35,6 +47,14 @@ class TreeAndNodeTester(TestCase):
         actual: list = tree.get_in_order_traversal()
 
         self.assertEqual(expected, actual)
+
+    def node_checker(self, current_node: Node):
+        self.node_checker_path.append(current_node.data)
+        print(current_node.data)
+        if current_node.left is not None:
+            self.node_checker(current_node.left)
+        if current_node.right is not None:
+            self.node_checker(current_node.right)
 
 
 if __name__ == "__main__":
