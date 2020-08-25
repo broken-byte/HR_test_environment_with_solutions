@@ -50,7 +50,7 @@ class TreeTester(TestCase):
 
     def node_checker(self, current_node: Node):
         self.node_checker_path.append(current_node.data)
-        print(current_node.data)
+
         if current_node.left is not None:
             self.node_checker(current_node.left)
         if current_node.right is not None:
