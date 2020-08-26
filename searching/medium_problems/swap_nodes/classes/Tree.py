@@ -1,31 +1,40 @@
-from .Node import Node
+from math import log
+
+from searching.medium_problems.swap_nodes.classes.Node import Node
 # TODO: Create test cases for tree class and node class and implement the tree class
-# TODO: Construct is not constructing properly, so use print statements/ debugger to see whats up
+# TODO: Try Iterative approach
+    #TODO: fix partitioner of indices
 
 
 class Tree:
 
     def __init__(self):
         self.root = Node(1)
-        self.indices: list = []
+        self.tree_levels: list = []
+        self.leveled_indices: list = []
         self.traversal_path: list = []
 
     def construct_with(self, indices: list):
-        pass
-        # TODO: Will try iterative approach, this input style is sooooo confusing haha
+        self.partition_indices_into_levels(indices)
 
+    def partition_indices_into_levels(self, indices: list):
+        indices_length: int = len(indices)
+        number_of_tree_levels: int = int(log(indices_length + 1, 2))
+        partitioned_indices: list = []
+
+        for level in range(number_of_tree_levels):
+            partition_start_index: int = 2**level
+            partition_size: int = 2**level
+            partition_end_index: int = partition_start_index + partition_size
+            partition: list = indices[partition_start_index: partition_end_index]
+            partitioned_indices.append(partition)
+
+        self.leveled_indices = partitioned_indices
+
+    def construct_tree_levels_with(self, leveled_indices: list):
+        pass
 
     def get_in_order_traversal(self) -> list:
         self.traversal_path.clear()
-        self.traverse(self.root)
         return self.traversal_path
-
-    def traverse(self, current_node: Node):
-        if current_node.left is not None:
-            self.traverse(current_node.left)
-
-        self.traversal_path.append(current_node.data)
-
-        if current_node.right is not None:
-            self.traverse(current_node.right)
 

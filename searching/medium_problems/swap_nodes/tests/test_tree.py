@@ -20,6 +20,21 @@ class TreeTester(TestCase):
         self.assertEqual(expected_class, actual_class)
         self.assertEqual(expected_data, actual_data)
 
+    def test_that_tree_can_partition_indices_into_level(self):
+        tree: Tree = Tree()
+        indices: list = [
+            [2, 3],
+            [-1, -1],
+            [-1, -1]
+        ]
+        tree.partition_indices_into_levels(indices)
+        expected: list = [
+            [[2, 3]],
+            [[-1, -1], [-1, -1]]
+        ]
+        actual: list = tree.leveled_indices
+        self.assertEqual(expected, actual)
+
     def test_that_tree_can_construct_given_indices(self):
         self.node_checker_path.clear()
         tree: Tree = Tree()
