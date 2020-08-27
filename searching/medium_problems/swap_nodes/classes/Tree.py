@@ -21,14 +21,12 @@ class Tree:
         indices_length: int = len(indices)
         number_of_tree_levels: int = int(log(indices_length + 1, 2))
         partitioned_indices: list = []
-
         for level in range(number_of_tree_levels):
-            partition_start_index: int = 2**level
-            partition_size: int = 2**level
-            partition_end_index: int = partition_start_index + partition_size
-            partition: list = indices[partition_start_index: partition_end_index]
+            start_index: int = 2**level - 1
+            size: int = 2**level
+            end_index: int = start_index + size
+            partition: list = indices[start_index: end_index]
             partitioned_indices.append(partition)
-
         self.leveled_indices = partitioned_indices
 
     def construct_tree_levels_with(self, leveled_indices: list):

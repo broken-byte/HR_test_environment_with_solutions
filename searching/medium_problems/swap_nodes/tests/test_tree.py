@@ -20,7 +20,7 @@ class TreeTester(TestCase):
         self.assertEqual(expected_class, actual_class)
         self.assertEqual(expected_data, actual_data)
 
-    def test_that_tree_can_partition_indices_into_level(self):
+    def test_that_tree_can_partition_indices_into_levels(self):
         tree: Tree = Tree()
         indices: list = [
             [2, 3],
