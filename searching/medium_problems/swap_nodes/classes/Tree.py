@@ -1,8 +1,7 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: Change level constructor so that it appends sequentially, not in pairs, since everything is in order
-# TODO: Connect levels
+# TODO: implement self.connect()
 # TODO: Create Swap function
 
 
@@ -35,23 +34,35 @@ class Tree:
             self.tree_levels.append(nodes)
 
     def connect_levels(self):
+        connection_i: int = 0
+        connection_j: int = 1
+        number_of_connection_steps: int = len(self.tree_levels) - 1
+        for _ in range(number_of_connection_steps):
+            parents: list = self.tree_levels[connection_i]
+            children: list = self.tree_levels[connection_j]
+            self.connect(parents, children)
+            connection_i += 1
+            connection_j += 1
+
+    @staticmethod
+    def connect(parents: list, children: list):
         pass
 
     def construct_partition_with(self, level_number: int) -> list:
         start_index: int = 2 ** level_number - 1
         size: int = 2 ** level_number
         end_index: int = start_index + size
-        partition: list = self.indices[start_index: end_index]
-        return partition
+        sequential_partition: list = []
+        for index in range(start_index, end_index):
+            sequential_partition.extend(self.indices[index])
+        return sequential_partition
 
     @staticmethod
     def construct_nodes_with(indices_partition) -> list:
         nodes: list = []
-        for index_pair in indices_partition:
-            left = Node(index_pair[0]) if index_pair[0] != -1 else None
-            right = Node(index_pair[1]) if index_pair[1] != -1 else None
-            node_pair = left, right
-            nodes.append(node_pair)
+        for data in indices_partition:
+            node: Node = Node(data) if data != -1 else None
+            nodes.append(node)
         return nodes
 
     def get_in_order_traversal(self) -> list:
