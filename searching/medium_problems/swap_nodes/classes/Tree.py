@@ -22,10 +22,13 @@ class Tree:
 
     def partition_indices_into_levels(self):
         indices_length: int = len(self.indices)
-        number_of_tree_levels: int = int(log(indices_length + 1, 2))
-        for level_number in range(number_of_tree_levels):
-            partition = self.construct_partition_with(level_number)
+        current_index: int = 0
+        number_of_non_null_nodes_in_previous_level: int = 1
+        while current_index < indices_length:
+            partition = self.construct_partition_with(current_index, number_of_non_null_nodes_in_previous_level)
             self.partitioned_indices.append(partition)
+            current_index += len(partition) // 2
+            number_of_non_null_nodes_in_previous_level = self.get_non_null_node_count_in(partition)
 
     def construct_tree_levels_with_partitioned_indices(self):
         self.tree_levels.append([self.root])
@@ -46,11 +49,20 @@ class Tree:
 
     @staticmethod
     def connect(parents: list, children: list):
-        pass
+        for parent in parents:
+            pass
 
-    def construct_partition_with(self, level_number: int) -> list:
-        start_index: int = 2 ** level_number - 1
-        size: int = 2 ** level_number
+    @staticmethod
+    def get_non_null_node_count_in(partition: list):
+        non_node_count: int = 0
+        for data in partition:
+            if data != -1:
+                non_node_count += 1
+        return non_node_count
+
+    def construct_partition_with(self, current_index: int, count_of_non_null_nodes_in_previous_level: int) -> list:
+        start_index: int = current_index
+        size: int = count_of_non_null_nodes_in_previous_level
         end_index: int = start_index + size
         sequential_partition: list = []
         for index in range(start_index, end_index):
