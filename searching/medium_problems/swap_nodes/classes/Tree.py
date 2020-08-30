@@ -1,8 +1,7 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: implement self.connect()
-# TODO: Create Swap function
+# TODO: write tests for swap function then implement swap function
 
 
 class Tree:
@@ -12,13 +11,30 @@ class Tree:
         self.indices: list = []
         self.partitioned_indices: list = []
         self.tree_levels: list = []
+        self.processed_queries: list = []
+        self.depth: int = 0
         self.traversal_path: list = []
+
+    def perform_swap_operations(self):
+        pass
+
+    def process_swap_queries(self, queries: list):
+        for k in queries:
+            depths_to_be_swapped: list = []
+            multiple: int = 1
+            product: int = multiple*k
+            while product <= self.depth:
+                depths_to_be_swapped.append(product)
+                multiple += 1
+                product = multiple * k
+            self.processed_queries.append(depths_to_be_swapped)
 
     def construct_with(self, indices: list):
         self.indices = indices
         self.partition_indices_into_levels()
         self.construct_tree_levels_with_partitioned_indices()
         self.connect_levels()
+        self.depth = len(self.tree_levels) - 1
 
     def partition_indices_into_levels(self):
         indices_length: int = len(self.indices)
@@ -47,19 +63,6 @@ class Tree:
             connection_i += 1
             connection_j += 1
 
-    @staticmethod
-    def connect(parents: list, children: list):
-        for parent in parents:
-            pass
-
-    @staticmethod
-    def get_non_null_node_count_in(partition: list):
-        non_node_count: int = 0
-        for data in partition:
-            if data != -1:
-                non_node_count += 1
-        return non_node_count
-
     def construct_partition_with(self, current_index: int, count_of_non_null_nodes_in_previous_level: int) -> list:
         start_index: int = current_index
         size: int = count_of_non_null_nodes_in_previous_level
@@ -70,12 +73,31 @@ class Tree:
         return sequential_partition
 
     @staticmethod
+    def get_non_null_node_count_in(partition: list):
+        non_node_count: int = 0
+        for data in partition:
+            if data != -1:
+                non_node_count += 1
+        return non_node_count
+
+    @staticmethod
     def construct_nodes_with(indices_partition) -> list:
         nodes: list = []
         for data in indices_partition:
             node: Node = Node(data) if data != -1 else None
             nodes.append(node)
         return nodes
+
+    @staticmethod
+    def connect(parents: list, children: list):
+        left_child_index: int = 0
+        right_child_index: int = 1
+        for parent in parents:
+            if parent is not None:
+                parent.left = children[left_child_index]
+                parent.right = children[right_child_index]
+                left_child_index += 2
+                right_child_index += 2
 
     def get_in_order_traversal(self) -> list:
         self.traversal_path.clear()
