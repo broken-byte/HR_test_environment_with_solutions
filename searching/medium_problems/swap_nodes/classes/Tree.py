@@ -1,7 +1,7 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: write tests for swap function then implement swap function
+# TODO: Create tests for swap operations, then implement swap operations
 
 
 class Tree:
@@ -17,6 +17,21 @@ class Tree:
 
     def perform_swap_operations(self):
         pass
+
+    def swap_nodes_in_tree_level(self, level_number: int):
+        i: int = 0
+        j: int = 1
+        parents: list = self.tree_levels[level_number]
+        children: list = self.tree_levels[level_number + 1]
+        while j <= len(children):
+            self.swap_child_nodes_at(i, j, level_number + 1)
+            i += 2
+            j += 2
+        self.connect(parents, children)
+
+    def swap_child_nodes_at(self, i: int, j, tree_level):
+        self.tree_levels[tree_level][i], self.tree_levels[tree_level][j] = self.tree_levels[tree_level][j], \
+                                                                           self.tree_levels[tree_level][i]
 
     def process_swap_queries(self, queries: list):
         for k in queries:

@@ -14,6 +14,19 @@ class IntegrationTreeTester(TestCase):
         self.tree = None
         self.node_checker_path.clear()
 
+    def test_that_tree_can_swap_a_level(self):
+        indices: list = [
+            [2, 3],
+            [-1, -1],
+            [-1, -1]
+        ]
+        self.tree.construct_with(indices)
+        self.tree.swap_nodes_in_tree_level(0)
+        expected_tree_level_data: list = [3, 2]
+        expected_tree_level_data: list = [3, 2]
+        actual_tree_level_data: list = [node.data for node in self.tree.tree_levels[1]]
+        self.assertEqual(expected_tree_level_data, actual_tree_level_data)
+
     def test_that_tree_can_construct_tree_levels_with_partitioned_indices(self):
         indices: list = [[2, 3], [-1, -1], [-1, -1]]
         self.tree.indices = indices
