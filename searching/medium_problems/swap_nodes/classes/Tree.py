@@ -15,7 +15,7 @@ class Tree:
         self.depth: int = 0
         self.traversal_path: list = []
 
-    def perform_swap_operations(self):
+    def perform_swap_operations_with_processed_queries(self):
         pass
 
     def swap_nodes_in_tree_level(self, level_number: int):

@@ -14,6 +14,26 @@ class IntegrationTreeTester(TestCase):
         self.tree = None
         self.node_checker_path.clear()
 
+    def test_that_tree_can_perform_swap_operations_with_processed_queries(self):
+        indices: list = [
+            [2, 3],
+            [-1, 4],
+            [-1, 5],
+            [-1, -1],
+            [-1, -1]
+        ]
+        self.tree.construct_with(indices)
+        expected: list = [
+            [Node(1).data],
+            [Node(2).data, Node(3).data],
+            [Node(4).data, None, Node(5).data, None],
+            [None, None, None, None]
+        ]
+        self.tree.perform_swap_operations_with_processed_queries()
+        actual_tree_levels: list = self.tree.tree_levels
+        actual_unpacked_tree_levels: list = self.unpack_tree_levels(actual_tree_levels)
+        self.assertEqual(expected, actual_unpacked_tree_levels)
+
     def test_that_tree_can_swap_a_level(self):
         indices: list = [
             [2, 3],

@@ -68,6 +68,19 @@ class BruteForceSwapNodesTester(TestCase):
                 [2, 6, 9, 4, 1, 3, 7, 5, 10, 8, 11]
             ]
         },
+        "test_3": {
+            "indexes": [
+                [2, 3],
+                [-1, 4],
+                [-1, 5],
+                [-1, -1],
+                [-1, -1]
+            ],
+            "queries": [2],
+            "expected": [
+                [4, 2, 1, 5, 3]
+            ]
+        }
     }
 
     def test_functionality_0(self):
