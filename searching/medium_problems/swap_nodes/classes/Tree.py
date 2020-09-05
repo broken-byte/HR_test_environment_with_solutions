@@ -1,7 +1,8 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: Create tests for swap operations, then implement swap operations
+# TODO: Currently, every swap only reorganizes the child level in a parent swap. the lower levels wont be in order.
+#       Fix this.
 
 
 class Tree:
@@ -13,18 +14,29 @@ class Tree:
         self.tree_levels: list = []
         self.processed_queries: list = []
         self.depth: int = 0
-        self.traversal_path: list = []
+        self.in_order_traversal_path: list = []
+        self.in_order_traversal_paths: list = []
 
-    def perform_swap_operations_with_processed_queries(self):
-        pass
+    def perform_in_order_traversal(self, current_node: Node):
+        if current_node.left is not None:
+            self.perform_in_order_traversal(current_node.left)
 
-    def swap_nodes_in_tree_level(self, level_number: int):
+        self.in_order_traversal_path.append(current_node.data)
+
+        if current_node.right is not None:
+            self.perform_in_order_traversal(current_node.right)
+
+    def perform_swaps_with(self, level_indices_to_be_swapped: list):
+        for tree_level_index in level_indices_to_be_swapped:
+            self.swap_nodes_in_tree_level_with(tree_level_index - 1)  # level indices start at 0
+
+    def swap_nodes_in_tree_level_with(self, tree_level_index: int):
         i: int = 0
         j: int = 1
-        parents: list = self.tree_levels[level_number]
-        children: list = self.tree_levels[level_number + 1]
+        parents: list = self.tree_levels[tree_level_index]
+        children: list = self.tree_levels[tree_level_index + 1]
         while j <= len(children):
-            self.swap_child_nodes_at(i, j, level_number + 1)
+            self.swap_child_nodes_at(i, j, tree_level_index + 1)
             i += 2
             j += 2
         self.connect(parents, children)
@@ -113,8 +125,3 @@ class Tree:
                 parent.right = children[right_child_index]
                 left_child_index += 2
                 right_child_index += 2
-
-    def get_in_order_traversal(self) -> list:
-        self.traversal_path.clear()
-        return self.traversal_path
-
