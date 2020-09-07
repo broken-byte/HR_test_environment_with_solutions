@@ -1,8 +1,7 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: Currently, every swap only reorganizes the child level in a parent swap. the lower levels wont be in order.
-#       Fix this.
+# TODO: Create tests for performing the swap queries and storing each end result, then implement
 
 
 class Tree:
@@ -31,19 +30,9 @@ class Tree:
             self.swap_nodes_in_tree_level_with(tree_level_index - 1)  # level indices start at 0
 
     def swap_nodes_in_tree_level_with(self, tree_level_index: int):
-        i: int = 0
-        j: int = 1
         parents: list = self.tree_levels[tree_level_index]
-        children: list = self.tree_levels[tree_level_index + 1]
-        while j <= len(children):
-            self.swap_child_nodes_at(i, j, tree_level_index + 1)
-            i += 2
-            j += 2
-        self.connect(parents, children)
-
-    def swap_child_nodes_at(self, i: int, j, tree_level):
-        self.tree_levels[tree_level][i], self.tree_levels[tree_level][j] = self.tree_levels[tree_level][j], \
-                                                                           self.tree_levels[tree_level][i]
+        for parent_node in parents:
+            parent_node.left, parent_node.right = parent_node.right, parent_node.left
 
     def process_swap_queries(self, queries: list):
         for k in queries:

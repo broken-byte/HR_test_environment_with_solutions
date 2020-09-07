@@ -23,17 +23,13 @@ class IntegrationTreeTester(TestCase):
             [-1, -1]
         ]
         self.tree.construct_with(indices)
-        expected: list = [
-            [Node(1).data],
-            [Node(2).data, Node(3).data],
-            [Node(4).data, None, Node(5).data, None],
-            [None, None, None, None]
-        ]
         level_indices_to_be_swapped: list = [2]
         self.tree.perform_swaps_with(level_indices_to_be_swapped)
-        actual_tree_levels: list = self.tree.tree_levels
-        actual_unpacked_tree_levels: list = self.unpack_tree_levels(actual_tree_levels)
-        self.assertEqual(expected, actual_unpacked_tree_levels)
+        self.tree.perform_in_order_traversal(self.tree.root)
+
+        expected_in_order_traversal: list = [4, 2, 1, 5, 3]
+        actual_in_order_traversal: list = self.tree.in_order_traversal_path
+        self.assertEqual(expected_in_order_traversal, actual_in_order_traversal)
 
     def test_that_tree_can_swap_a_level(self):
         indices: list = [
@@ -42,11 +38,12 @@ class IntegrationTreeTester(TestCase):
             [-1, -1]
         ]
         self.tree.construct_with(indices)
-        self.tree.swap_nodes_in_tree_level_with(0)
-        expected_tree_level_data: list = [3, 2]
-        expected_tree_level_data: list = [3, 2]
-        actual_tree_level_data: list = [node.data for node in self.tree.tree_levels[1]]
-        self.assertEqual(expected_tree_level_data, actual_tree_level_data)
+        tree_level_index: int = 0
+        self.tree.swap_nodes_in_tree_level_with(tree_level_index)
+        expected_in_order_traversal: list = [3, 1, 2]
+        self.tree.perform_in_order_traversal(self.tree.root)
+        actual_in_order_traversal: list = self.tree.in_order_traversal_path
+        self.assertEqual(expected_in_order_traversal, actual_in_order_traversal)
 
     def test_that_tree_can_construct_tree_levels_with_partitioned_indices(self):
         indices: list = [[2, 3], [-1, -1], [-1, -1]]
@@ -70,10 +67,11 @@ class IntegrationTreeTester(TestCase):
             [-1, -1]
         ]
         self.tree.construct_with(indices)
-        expected: list = [1, 2, 3]
-        self.connection_checker(self.tree.root)
-        actual: list = self.node_checker_path
-        self.assertEqual(expected, actual)
+        self.tree.perform_in_order_traversal(self.tree.root)
+        
+        expected_in_order_traversal: list = [2, 1, 3]
+        actual_in_order_traversal: list = self.tree.in_order_traversal_path
+        self.assertEqual(expected_in_order_traversal, actual_in_order_traversal)
 
     def test_that_tree_can_traverse_in_order_given_indices(self):
         indices: list = [
