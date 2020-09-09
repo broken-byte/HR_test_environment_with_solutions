@@ -14,6 +14,31 @@ class IntegrationTreeTester(TestCase):
         self.tree = None
         self.node_checker_path.clear()
 
+    def test_that_tree_can_perform_swap_operations_with_processed_queries(self):
+        indices: list = [
+            [2, 3],
+            [4, -1],
+            [5, -1],
+            [6, -1],
+            [7, 8],
+            [-1, 9],
+            [-1, -1],
+            [10, 11],
+            [-1, -1],
+            [-1, -1],
+            [-1, -1]
+        ]
+        self.tree.construct_with(indices)
+        unprocessed_queries: list = [2, 4]
+        self.tree.process_swap_queries(unprocessed_queries)
+        self.tree.perform_swap_operations_with_all_processed_queries()
+        expected_in_order_traversal_results: list = [
+            [2, 9, 6, 4, 1, 3, 7, 5, 11, 8, 10],
+            [2, 6, 9, 4, 1, 3, 7, 5, 10, 8, 11]
+        ]
+        actual_in_order_traversal_results: list = self.tree.results
+        self.assertEqual(expected_in_order_traversal_results, actual_in_order_traversal_results)
+
     def test_that_tree_can_perform_swaps_with_swap_operations(self):
         indices: list = [
             [2, 3],
@@ -23,8 +48,8 @@ class IntegrationTreeTester(TestCase):
             [-1, -1]
         ]
         self.tree.construct_with(indices)
-        level_indices_to_be_swapped: list = [2]
-        self.tree.perform_swaps_with(level_indices_to_be_swapped)
+        processed_query: list = [2]
+        self.tree.perform_swap_operations_with(processed_query)
         self.tree.perform_in_order_traversal(self.tree.root)
 
         expected_in_order_traversal: list = [4, 2, 1, 5, 3]
@@ -68,7 +93,7 @@ class IntegrationTreeTester(TestCase):
         ]
         self.tree.construct_with(indices)
         self.tree.perform_in_order_traversal(self.tree.root)
-        
+
         expected_in_order_traversal: list = [2, 1, 3]
         actual_in_order_traversal: list = self.tree.in_order_traversal_path
         self.assertEqual(expected_in_order_traversal, actual_in_order_traversal)

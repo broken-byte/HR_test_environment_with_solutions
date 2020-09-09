@@ -1,7 +1,6 @@
 from math import log
 
 from searching.medium_problems.swap_nodes.classes.Node import Node
-# TODO: Create tests for performing the swap queries and storing each end result, then implement
 
 
 class Tree:
@@ -14,7 +13,7 @@ class Tree:
         self.processed_queries: list = []
         self.depth: int = 0
         self.in_order_traversal_path: list = []
-        self.in_order_traversal_paths: list = []
+        self.results: list = []
 
     def perform_in_order_traversal(self, current_node: Node):
         if current_node.left is not None:
@@ -25,14 +24,23 @@ class Tree:
         if current_node.right is not None:
             self.perform_in_order_traversal(current_node.right)
 
-    def perform_swaps_with(self, level_indices_to_be_swapped: list):
-        for tree_level_index in level_indices_to_be_swapped:
+    def perform_swap_operations_with_all_processed_queries(self):
+        for processed_query in self.processed_queries:
+            self.perform_swap_operations_with(processed_query)
+            self.perform_in_order_traversal(self.root)
+            result: list = self.in_order_traversal_path.copy()
+            self.results.append(result)
+            self.in_order_traversal_path.clear()
+
+    def perform_swap_operations_with(self, processed_query: list):
+        for tree_level_index in processed_query:
             self.swap_nodes_in_tree_level_with(tree_level_index - 1)  # level indices start at 0
 
     def swap_nodes_in_tree_level_with(self, tree_level_index: int):
         parents: list = self.tree_levels[tree_level_index]
         for parent_node in parents:
-            parent_node.left, parent_node.right = parent_node.right, parent_node.left
+            if parent_node is not None:
+                parent_node.left, parent_node.right = parent_node.right, parent_node.left
 
     def process_swap_queries(self, queries: list):
         for k in queries:
