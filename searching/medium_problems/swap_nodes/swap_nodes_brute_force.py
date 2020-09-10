@@ -1,5 +1,10 @@
+from searching.medium_problems.swap_nodes.classes.Tree import Tree
 
 
-# TODO: Implement the below now that you have a working tree class
+# TODO: Refactor to separate Tree class into 3 classes: A tree constructor, a query processor, and the Tree itself
 def swap_nodes_brute_force(indices: list, queries: list) -> list:
-    pass
+    tree: Tree = Tree()
+    tree.construct_with(indices)
+    tree.process_swap_queries(queries)
+    tree.perform_swap_operations_with_all_processed_queries()
+    return tree.results
