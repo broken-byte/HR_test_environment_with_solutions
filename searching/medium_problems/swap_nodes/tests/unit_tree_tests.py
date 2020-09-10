@@ -69,7 +69,7 @@ class UnitTreeTester(TestCase):
             [Node(2), Node(3)]
         ]
         self.tree.connect(self.tree.tree_levels[0], self.tree.tree_levels[1])
-        actual: bool = self.check_connections_between_levels(self.tree.tree_levels[0], self.tree.tree_levels[1])
+        actual: bool = self.is_tree_connected(self.tree.tree_levels[0], self.tree.tree_levels[1])
         self.assertTrue(actual)
 
     def test_that_tree_can_store_proper_depth(self):
@@ -102,7 +102,7 @@ class UnitTreeTester(TestCase):
         self.assertEqual(expected, actual)
 
     @staticmethod
-    def check_connections_between_levels(tree_level_0, tree_level_1) -> bool:
+    def is_tree_connected(tree_level_0, tree_level_1) -> bool:
         for node in tree_level_0:
             left_index: int = 0
             right_index: int = 1
