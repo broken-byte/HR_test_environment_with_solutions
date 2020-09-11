@@ -14,10 +14,10 @@ class IntegrationTreeFactoryTester(TestCase):
         self.tree_factory = None
 
     def test_that_tree_factory_can_construct_tree_levels_with_partitioned_indices(self):
-        indices: list = [[2, 3], [-1, -1], [-1, -1]]
-        self.tree_factory.tree_root = Node(1)
-        self.tree_factory.indices = indices
-        self.tree_factory.partition_indices_into_levels()
+        root: Node = Node(1)
+        self.tree_factory.tree_root = root
+        partitioned_indices: list = [[2, 3], [-1, -1, -1, -1]]
+        self.tree_factory.partitioned_indices = partitioned_indices
         self.tree_factory.construct_tree_levels_with_partitioned_indices()
 
         expected: list = [
@@ -29,13 +29,9 @@ class IntegrationTreeFactoryTester(TestCase):
         actual_unpacked_tree_levels: list = self.unpack_tree_levels(actual_tree_levels)
         self.assertEqual(expected, actual_unpacked_tree_levels)
 
-    def test_that_tree_factory_can_construct_tree_given_indices(self):
-        indices: list = [
-            [2, 3],
-            [-1, -1],
-            [-1, -1]
-        ]
-        self.tree_factory.construct_tree_with(indices)
+    def test_that_tree_factory_can_construct_tree_given_partitioned_indices(self):
+        partitioned_indices: list = [[2, 3], [-1, -1, -1, -1]]
+        self.tree_factory.construct_tree_with(partitioned_indices)
         constructed_tree: Tree = self.tree_factory.get_constructed_tree()
         constructed_tree.perform_in_order_traversal(constructed_tree.root)
 

@@ -13,35 +13,42 @@ class UnitTreeFactoryTester(TestCase):
     def tearDown(self):
         self.tree_factory = None
 
-    def test_that_tree_factory_can_partition_indices_into_levels(self):
-        indices: list = [[2, 3], [-1, -1], [-1, -1]]
-        self.tree_factory.indices = indices
-        self.tree_factory.partition_indices_into_levels()
+    # def test_that_tree_factory_can_partition_indices_into_levels(self):
+    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
+    #     self.tree_factory.indices = indices
+    #     self.tree_factory.partition_indices_into_levels()
+    #
+    #     expected: list = [
+    #         [2, 3],
+    #         [-1, -1, -1, -1]
+    #     ]
+    #     actual: list = self.tree_factory.partitioned_indices
+    #     self.assertEqual(expected, actual)
 
-        expected: list = [
-            [2, 3],
-            [-1, -1, -1, -1]
-        ]
-        actual: list = self.tree_factory.partitioned_indices
-        self.assertEqual(expected, actual)
+    # def test_that_tree_factory_can_construct_a_size_1_partition_with_index_and_number_of_non_null_nodes(self):
+    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
+    #     self.tree_factory.indices = indices
+    #
+    #     expected: list = [2, 3]
+    #     actual: list = self.tree_factory.construct_partition_with(current_index=0,
+    #                                                               count_of_non_null_nodes_in_previous_level=1)
+    #     self.assertEqual(expected, actual)
 
-    def test_that_tree_factory_can_construct_a_size_1_partition_with_index_and_number_of_non_null_nodes(self):
-        indices: list = [[2, 3], [-1, -1], [-1, -1]]
-        self.tree_factory.indices = indices
-
-        expected: list = [2, 3]
-        actual: list = self.tree_factory.construct_partition_with(current_index=0,
-                                                                  count_of_non_null_nodes_in_previous_level=1)
-        self.assertEqual(expected, actual)
-
-    def test_that_tree_factory_can_construct_a_size_2_partition_with_index_and_number_of_non_null_nodes(self):
-        indices: list = [[2, 3], [-1, -1], [-1, -1]]
-        self.tree_factory.indices = indices
-
-        expected: list = [-1, -1, -1, -1]
-        actual: list = self.tree_factory.construct_partition_with(current_index=1,
-                                                                  count_of_non_null_nodes_in_previous_level=2)
-        self.assertEqual(expected, actual)
+    # def test_that_tree_factory_can_construct_a_size_2_partition_with_index_and_number_of_non_null_nodes(self):
+    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
+    #     self.tree_factory.indices = indices
+    #
+    #     expected: list = [-1, -1, -1, -1]
+    #     actual: list = self.tree_factory.construct_partition_with(current_index=1,
+    #                                                               count_of_non_null_nodes_in_previous_level=2)
+    #     self.assertEqual(expected, actual)    # def test_that_tree_factory_can_construct_a_size_2_partition_with_index_and_number_of_non_null_nodes(self):
+    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
+    #     self.tree_factory.indices = indices
+    #
+    #     expected: list = [-1, -1, -1, -1]
+    #     actual: list = self.tree_factory.construct_partition_with(current_index=1,
+    #                                                               count_of_non_null_nodes_in_previous_level=2)
+    #     self.assertEqual(expected, actual)
 
     def test_that_tree_factory_can_construct_nodes_with_partition_of_non_null_data(self):
         partition: list = [2, 3]
@@ -65,13 +72,6 @@ class UnitTreeFactoryTester(TestCase):
         actual: bool = self.is_tree_connected(self.tree_factory.tree_levels[0],
                                               self.tree_factory.tree_levels[1])
         self.assertTrue(actual)
-
-    def test_that_tree_factory_can_store_proper_depth(self):
-        indices: list = [[2, 3], [-1, -1], [-1, -1]]
-        self.tree_factory.construct_tree_with(indices)
-        expected: int = 2
-        actual: int = self.tree_factory.depth
-        self.assertEqual(expected, actual)
 
     @staticmethod
     def is_tree_connected(tree_level_0, tree_level_1) -> bool:
