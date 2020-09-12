@@ -31,7 +31,7 @@ class IntegrationTreeTester(TestCase):
         self.tree.construct_with(indices)
         unprocessed_queries: list = [2, 4]
         self.tree.process_swap_queries(unprocessed_queries)
-        self.tree.perform_swap_operations_with_all_processed_queries()
+        self.tree.perform_swap_operations_with_()
         expected_in_order_traversal_results: list = [
             [2, 9, 6, 4, 1, 3, 7, 5, 11, 8, 10],
             [2, 6, 9, 4, 1, 3, 7, 5, 10, 8, 11]
