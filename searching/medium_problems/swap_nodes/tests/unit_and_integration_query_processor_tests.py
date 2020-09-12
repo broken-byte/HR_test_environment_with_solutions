@@ -3,7 +3,7 @@ from unittest import TestCase
 from searching.medium_problems.swap_nodes.classes.QueryProcessor import QueryProcessor
 
 
-class UnitTreeTester(TestCase):
+class UnitAndIntegrationQueryProcessorTester(TestCase):
 
     def test_that_query_processor_can_process_queries_2_4_with_depth_limit_of_5(self):
         swap_queries: list = [2, 4]

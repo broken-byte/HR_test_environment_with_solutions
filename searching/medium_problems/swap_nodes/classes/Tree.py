@@ -10,7 +10,7 @@ class Tree:
         self.in_order_traversal_path: list = []
         self.results: list = []
 
-    def perform_swap_operations_with_(self, processed_queries: list):
+    def perform_swapped_traversals_with(self, processed_queries: list):
         for processed_query in processed_queries:
             self.perform_swap_operations_with(processed_query)
             self.perform_in_order_traversal(self.root)

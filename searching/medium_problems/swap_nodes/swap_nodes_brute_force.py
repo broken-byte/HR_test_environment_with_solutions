@@ -4,8 +4,7 @@ from searching.medium_problems.swap_nodes.classes.IndicesPartitioner import Indi
 from searching.medium_problems.swap_nodes.classes.QueryProcessor import QueryProcessor
 
 
-# TODO: Refactor to create a query processor class, and reduce scope of Tree to only worry about swapping and holding
-#  root/tree nodes
+# TODO:
 def swap_nodes_brute_force(indices: list, queries: list) -> list:
     indices_partitioner: IndicesPartitioner = IndicesPartitioner(indices)
     partitioned_indices: list = indices_partitioner.partition_indices()
@@ -17,6 +16,6 @@ def swap_nodes_brute_force(indices: list, queries: list) -> list:
     query_processor: QueryProcessor = QueryProcessor(queries)
     processed_queries: list = query_processor.process_queries_with_depth_limit(tree.depth)
 
-    tree.perform_swap_operations_with_(processed_queries)
+    tree.perform_swapped_traversals_with(processed_queries)
 
     return tree.results

@@ -13,43 +13,6 @@ class UnitTreeFactoryTester(TestCase):
     def tearDown(self):
         self.tree_factory = None
 
-    # def test_that_tree_factory_can_partition_indices_into_levels(self):
-    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
-    #     self.tree_factory.indices = indices
-    #     self.tree_factory.partition_indices_into_levels()
-    #
-    #     expected: list = [
-    #         [2, 3],
-    #         [-1, -1, -1, -1]
-    #     ]
-    #     actual: list = self.tree_factory.partitioned_indices
-    #     self.assertEqual(expected, actual)
-
-    # def test_that_tree_factory_can_construct_a_size_1_partition_with_index_and_number_of_non_null_nodes(self):
-    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
-    #     self.tree_factory.indices = indices
-    #
-    #     expected: list = [2, 3]
-    #     actual: list = self.tree_factory.construct_partition_with(current_index=0,
-    #                                                               count_of_non_null_nodes_in_previous_level=1)
-    #     self.assertEqual(expected, actual)
-
-    # def test_that_tree_factory_can_construct_a_size_2_partition_with_index_and_number_of_non_null_nodes(self):
-    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
-    #     self.tree_factory.indices = indices
-    #
-    #     expected: list = [-1, -1, -1, -1]
-    #     actual: list = self.tree_factory.construct_partition_with(current_index=1,
-    #                                                               count_of_non_null_nodes_in_previous_level=2)
-    #     self.assertEqual(expected, actual)    # def test_that_tree_factory_can_construct_a_size_2_partition_with_index_and_number_of_non_null_nodes(self):
-    #     indices: list = [[2, 3], [-1, -1], [-1, -1]]
-    #     self.tree_factory.indices = indices
-    #
-    #     expected: list = [-1, -1, -1, -1]
-    #     actual: list = self.tree_factory.construct_partition_with(current_index=1,
-    #                                                               count_of_non_null_nodes_in_previous_level=2)
-    #     self.assertEqual(expected, actual)
-
     def test_that_tree_factory_can_construct_nodes_with_partition_of_non_null_data(self):
         partition: list = [2, 3]
         expected: list = [Node(2).data, Node(3).data]

@@ -3,7 +3,7 @@ from unittest import TestCase, main
 from searching.medium_problems.swap_nodes.classes.Node import Node
 
 
-class TreeTester(TestCase):
+class UnitNodeTester(TestCase):
 
     def test_that_node_has_data(self):
         node: Node = Node(1)
