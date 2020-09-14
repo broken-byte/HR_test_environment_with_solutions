@@ -25,27 +25,41 @@ from \
     searching.medium_problems.swap_nodes.tests.test_swap_nodes_brute_force \
     import BruteForceSwapNodesTester
 
-# TODO: Figure out how to make suites lol
-suite = unittest.TestSuite()
 
-# add tests to the test suite
-suite.addTests(
-    [
-        UnitNodeTester(),
-        UnitTreeFactoryTester(),
-        UnitAndIntegrationIndicesPartitionerTester(),
-        UnitAndIntegrationQueryProcessorTester()
-    ]
-)
+unit_test_case_classes: list = [
+    UnitNodeTester,
+    UnitTreeFactoryTester,
+    UnitAndIntegrationIndicesPartitionerTester,
+    UnitAndIntegrationQueryProcessorTester
+]
 
-suite.addTests(
-    [
-        IntegrationTreeTester(),
-        IntegrationTreeFactoryTester()
-    ]
-)
 
-suite.addTest(BruteForceSwapNodesTester())
+integration_test_case_classes: list = [
+    IntegrationTreeTester,
+    IntegrationTreeFactoryTester
+]
 
-runner = unittest.TextTestRunner(verbosity=3)
-result = runner.run(suite)
+super_integration_test_case_classes: list = [
+    BruteForceSwapNodesTester
+]
+
+all_test_case_classes = []
+all_test_case_classes.extend(unit_test_case_classes)
+all_test_case_classes.extend(integration_test_case_classes)
+all_test_case_classes.extend(super_integration_test_case_classes)
+
+
+def test_runner(test_case_classes: list):
+    loader = unittest.TestLoader()
+    suites: list = []
+    for test_case_class in test_case_classes:
+        suite: unittest.TestSuite = loader.loadTestsFromTestCase(test_case_class)
+        suites.append(suite)
+
+    suite_of_suites: unittest.TestSuite = unittest.TestSuite(suites)
+    runner = unittest.TextTestRunner()
+    results = runner.run(suite_of_suites)
+
+
+if __name__ == '__main__':
+    test_runner(all_test_case_classes)
