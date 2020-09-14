@@ -19,7 +19,6 @@ class TreeFactory:
     def construct_tree_with(self, partitioned_indices: list):
 
         self.tree_root: Node = Node(1)
-        # self.partition_indices_into_levels()
         self.partitioned_indices = partitioned_indices
         self.construct_tree_levels_with_partitioned_indices()
         self.connect_levels()
@@ -60,8 +59,3 @@ class TreeFactory:
                 left_child_index += 2
                 right_child_index += 2
 
-    def clear_factory(self):
-        self.tree_root = None
-        self.partitioned_indices.clear()
-        self.tree_levels.clear()
-        self.depth = 0
