@@ -95,7 +95,7 @@ class BruteForceSwapNodesTester(TestCase):
         self.assertEqual(expected, actual)
 
     def test_functionality_1(self):
-        test_data = self.get_functionality_test_data("test_0")
+        test_data = self.get_functionality_test_data("test_1")
         indexes: list = test_data["indexes"]
         queries: list = test_data["queries"]
 
@@ -106,7 +106,18 @@ class BruteForceSwapNodesTester(TestCase):
         self.assertEqual(expected, actual)
 
     def test_functionality_2(self):
-        test_data = self.get_functionality_test_data("test_0")
+        test_data = self.get_functionality_test_data("test_2")
+        indexes: list = test_data["indexes"]
+        queries: list = test_data["queries"]
+
+        expected: list = test_data["expected"]
+        actual: list = swap_nodes_brute_force(indexes, queries)
+
+        print(test_data, actual, "\n")
+        self.assertEqual(expected, actual)
+
+    def test_functionality_3(self):
+        test_data = self.get_functionality_test_data("test_3")
         indexes: list = test_data["indexes"]
         queries: list = test_data["queries"]
 
