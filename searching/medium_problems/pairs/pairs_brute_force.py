@@ -1,6 +1,7 @@
 
 # TODO: Optimize
 def pairs_brute_force(k: int, arr: list) -> int:
+    # Time Complexity: O(n^2)
     length: int = len(arr)
     count: int = 0
     ledger: set = set({})
