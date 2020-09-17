@@ -3,7 +3,7 @@ import os
 
 from searching.medium_problems.pairs.pairs_optimized import pairs_optimized
 from test_utilities.time_complexity_test_functions import get_console_time_logged_result_of
-from test_utilities.time_complexity_test_functions import process_test_file_where_lines_are_int_elements
+from test_utilities.time_complexity_test_functions import process_test_file_where_single_line_is_an_int_array
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"
@@ -106,7 +106,7 @@ class OptimizedPairsTester(TestCase):
         time_complexity_test_data: dict = self.time_complexity_test_data[test_name]
         test_file_path: str = test_resources_path + time_complexity_test_data["test_file"]
 
-        arr: list = process_test_file_where_lines_are_int_elements(test_file_path, exclude_index=1)
+        arr: list = process_test_file_where_single_line_is_an_int_array(test_file_path)
         time_complexity_test_data["test_file"] = arr
         time_complexity_test_data["arr"] = time_complexity_test_data.pop("test_file")
         return time_complexity_test_data
