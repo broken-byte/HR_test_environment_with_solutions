@@ -1,11 +1,5 @@
 
 
-def pairs_optimized(k: int, arr: list) -> int:
-    k_difference_counter = KDifferenceCounter(k, arr)
-    k_difference_counter.count_k_differences()
-    return k_difference_counter.count
-
-
 class KDifferenceCounter:
 
     def __init__(self, k: int, arr: list):

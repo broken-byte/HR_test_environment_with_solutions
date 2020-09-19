@@ -1,4 +1,4 @@
-from unittest import TestCase, main
+from unittest import TestCase, main, skip
 import os
 
 from searching.medium_problems.pairs.pairs_optimized import pairs_optimized
