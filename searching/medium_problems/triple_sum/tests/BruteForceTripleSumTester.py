@@ -30,6 +30,12 @@ class BruteForceTripleSumTester(TestCase):
             "c": [7, 9, 11, 13],
             "expected": 12
         },
+        "test_3": {
+            "a": [3, 5, 7],
+            "b": [3, 6],
+            "c": [4, 6, 9],
+            "expected": 4
+        },
     }
 
     def test_functionality_0(self):
@@ -54,6 +60,16 @@ class BruteForceTripleSumTester(TestCase):
 
     def test_functionality_2(self):
         test_data = self.get_functionality_test_data("test_2")
+        a: list = test_data["a"]
+        b: list = test_data["b"]
+        c: list = test_data["c"]
+
+        expected: int = test_data["expected"]
+        actual: int = triple_sum_brute_force(a, b, c)
+        self.assertEqual(expected, actual)
+
+    def test_functionality_3(self):
+        test_data = self.get_functionality_test_data("test_3")
         a: list = test_data["a"]
         b: list = test_data["b"]
         c: list = test_data["c"]
