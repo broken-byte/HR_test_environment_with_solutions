@@ -1,28 +1,18 @@
-# TODO: Use binary search HOLY FUCK YES
+import bisect
 
 
-def optimized_triple_sum(a: list, b: list, c: list) -> int:
-    triplet: list = []
-    triplets: set = set([])
-    sorted_a: list = sorted(a)
-    sorted_b: list = sorted(b, reverse=True)
-    sorted_c: list = sorted(c)
-    for p in sorted_a:
-        triplet.clear()
-        triplet.append(p)
-        for q in sorted_b:
-            if p <= q:  # keep going
-                triplet.append(q)
-            else:
-                break
-            for r in sorted_c:
-                if q >= r:
-                    triplet.append(r)
-                    hash_triplet: tuple = tuple(triplet)
-                    if hash_triplet not in triplets:
-                        triplets.add(hash_triplet)
-                    triplet.pop()
-                else:
-                    break
-            triplet.pop()  # remove old q
-    return len(triplets)
+def optimized_triple_sum(a: list, b: list, c: list) -> int:  #O(b*[log(a) + log(c)])
+    a = sorted(list(set(a)))
+    b = sorted(list(set(b)))
+    c = sorted(list(set(c)))
+    count: int = 0
+    if a[0] > b[-1] or b[-1] < c[0]:
+        return 0
+    for q in b:  # O(b)
+        index_of_q_in_a: int = bisect.bisect_right(a, q)  # O(log(a)
+        index_of_q_in_c: int = bisect.bisect_right(c, q)  # O(log(c)
+        if index_of_q_in_a != 0 and index_of_q_in_c != 0:
+            count += index_of_q_in_a * index_of_q_in_c
+    return count
+
+
