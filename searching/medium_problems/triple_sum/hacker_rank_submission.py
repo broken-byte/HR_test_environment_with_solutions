@@ -38,22 +38,19 @@ class TripletCounter:
         return min(self.a) > max(self.b) or max(self.b) < min(self.c)
 
     def find_all_possible_triplets_given(self, q: int):
-        index_of_q_in_a: int = self.find_index_of_where_q_would_fit_whilst_maintaining_order_in_a(q)
-        index_of_q_in_c: int = self.find_index_of_where_q_would_fit_whilst_maintaining_order_in_c(q)
-        if self.triplets_are_possible_given(index_of_q_in_a, index_of_q_in_c):
-            triplets: int = self.get_all_possible_combinations_of_valid_triplets_given(index_of_q_in_a, index_of_q_in_c)
-            self.count += triplets
+        valid_elements_in_a: int = self.find_all_elements_in_array_a_that_are_less_than_or_equal_to(q)
+        valid_elements_in_c: int = self.find_all_elements_in_array_c_that_are_less_than_or_equal_to(q)
+        if self.triplets_are_possible_given(valid_elements_in_a, valid_elements_in_c):
+            all_possible_triplet_combinations: int = valid_elements_in_a * valid_elements_in_c
+            self.count += all_possible_triplet_combinations
 
-    def find_index_of_where_q_would_fit_whilst_maintaining_order_in_a(self, q: int) -> int:
+    def find_all_elements_in_array_a_that_are_less_than_or_equal_to(self, q: int) -> int:
         return bisect.bisect_right(self.a, q)
 
-    def find_index_of_where_q_would_fit_whilst_maintaining_order_in_c(self, q: int) -> int:
+    def find_all_elements_in_array_c_that_are_less_than_or_equal_to(self, q: int) -> int:
         return bisect.bisect_right(self.c, q)
 
     @staticmethod
-    def triplets_are_possible_given(index_of_q_in_a: int, index_of_q_in_c: int) -> bool:
-        return index_of_q_in_a != 0 and index_of_q_in_c != 0
+    def triplets_are_possible_given(valid_elements_in_a: int, valid_elements_in_c: int) -> bool:
+        return valid_elements_in_a != 0 and valid_elements_in_c != 0
 
-    @staticmethod
-    def get_all_possible_combinations_of_valid_triplets_given(index_of_q_in_a: int, index_of_q_in_c: int) -> int:
-        return index_of_q_in_a * index_of_q_in_c
