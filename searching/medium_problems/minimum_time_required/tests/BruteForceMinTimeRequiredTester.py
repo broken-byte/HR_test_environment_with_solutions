@@ -30,6 +30,11 @@ class BruteForceMinTimeRequiredTester(TestCase):
             "goal": 10,
             "expected": 8
         },
+        "test_4": {
+            "machines": [63, 2, 26, 59, 16, 55, 99, 21, 98, 65],
+            "goal": 56,
+            "expected": 82
+        },
     }
 
     def test_functionality_0(self):

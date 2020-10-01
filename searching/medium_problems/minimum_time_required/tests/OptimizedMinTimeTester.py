@@ -2,7 +2,7 @@ from unittest import TestCase, main
 import os
 
 from test_utilities.time_complexity_test_functions import get_console_time_logged_result_of
-from test_utilities.time_complexity_test_functions import process_test_file_where_lines_are_int_arrays
+from test_utilities.time_complexity_test_functions import process_test_file_where_single_line_is_an_int_array
 from searching.medium_problems.minimum_time_required.tests.BruteForceMinTimeRequiredTester import \
     BruteForceMinTimeRequiredTester
 from searching.medium_problems.minimum_time_required.optimized_min_time_required import optimized_min_time
@@ -38,7 +38,7 @@ class OptimizedMinTimeTester(TestCase):
         self.assertEqual(expected, actual)
 
     def test_functionality_1(self):
-        test_data = self.get_functionality_test_data("test_0")
+        test_data = self.get_functionality_test_data("test_1")
         machines: list = test_data["machines"]
         goal: int = test_data["goal"]
 
@@ -47,7 +47,7 @@ class OptimizedMinTimeTester(TestCase):
         self.assertEqual(expected, actual)
 
     def test_functionality_2(self):
-        test_data = self.get_functionality_test_data("test_0")
+        test_data = self.get_functionality_test_data("test_2")
         machines: list = test_data["machines"]
         goal: int = test_data["goal"]
 
@@ -56,7 +56,16 @@ class OptimizedMinTimeTester(TestCase):
         self.assertEqual(expected, actual)
 
     def test_functionality_3(self):
-        test_data = self.get_functionality_test_data("test_0")
+        test_data = self.get_functionality_test_data("test_3")
+        machines: list = test_data["machines"]
+        goal: int = test_data["goal"]
+
+        expected: int = test_data["expected"]
+        actual: int = optimized_min_time(machines, goal)
+        self.assertEqual(expected, actual)
+
+    def test_functionality_4(self):
+        test_data = self.get_functionality_test_data("test_4")
         machines: list = test_data["machines"]
         goal: int = test_data["goal"]
 
@@ -90,6 +99,6 @@ class OptimizedMinTimeTester(TestCase):
         time_complexity_test_data: dict = self.time_complexity_test_data[test_name]
         test_file_path: str = test_resources_path + time_complexity_test_data["test_file"]
 
-        machines: list = process_test_file_where_lines_are_int_arrays(test_file_path)
+        machines: list = process_test_file_where_single_line_is_an_int_array(test_file_path)
         time_complexity_test_data["machines"] = machines
         return time_complexity_test_data
