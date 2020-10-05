@@ -14,7 +14,6 @@ test_resources_path = current_path + "/test_resources/"
 class OptimizedMinTimeTester(TestCase):
 
     functionality_test_data: dict = BruteForceMinTimeRequiredTester.functionality_test_data
-
     time_complexity_test_data: dict = {
         "test_0": {
             "test_file": "time_complexity_test_0.txt",
@@ -25,6 +24,11 @@ class OptimizedMinTimeTester(TestCase):
             "test_file": "time_complexity_test_1.txt",
             "goal": 232897690,
             "expected": 1340828872701
+        },
+        "test_2": {
+            "test_file": "time_complexity_test_2.txt",
+            "goal": 1667,
+            "expected": 154
         }
     }
 
@@ -84,6 +88,15 @@ class OptimizedMinTimeTester(TestCase):
 
     def test_time_complexity_1(self):
         test_data: dict = self.get_time_complexity_test_data("test_1")
+        machines: list = test_data["machines"]
+        goal: int = test_data["goal"]
+
+        expected: int = test_data["expected"]
+        actual: int = get_console_time_logged_result_of(optimized_min_time, machines, goal)
+        self.assertEqual(expected, actual)
+
+    def test_time_complexity_2(self):
+        test_data: dict = self.get_time_complexity_test_data("test_2")
         machines: list = test_data["machines"]
         goal: int = test_data["goal"]
 

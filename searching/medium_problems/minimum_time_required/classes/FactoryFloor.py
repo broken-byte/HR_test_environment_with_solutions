@@ -1,11 +1,5 @@
 
 
-def minTime(machines: list, goal: int) -> int:
-    factory_floor = FactoryFloor(machines, goal)
-    minimum_time_required: int = factory_floor.get_minimum_time_required_to_meet_goal()
-    return minimum_time_required
-
-
 class FactoryFloor:
 
     def __init__(self, machines: list, goal: int):
