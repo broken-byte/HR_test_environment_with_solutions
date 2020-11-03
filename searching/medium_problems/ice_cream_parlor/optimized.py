@@ -11,17 +11,12 @@ def what_flavors(trips: list) -> list:
 
 
 def get_optimal_ice_cream_purchases(money: int, cost: list) -> list:
-    distinct_flavors: list = []
-    hashed_flavors: dict = {}
-    for i, ice_cream_flavor in enumerate(cost):
-        if ice_cream_flavor in hashed_flavors:
-            hashed_flavors[ice_cream_flavor] = i + 1
-    print(hashed_flavors)
-    print(cost)
-    for ice_cream_flavor in hashed_flavors.keys():
-        difference: int = money - ice_cream_flavor
-        if difference in hashed_flavors:
-            distinct_flavors.append(hashed_flavors[difference])
-            distinct_flavors.append(hashed_flavors[ice_cream_flavor])
-            break
-    return sorted(distinct_flavors)
+    hash_table: dict = {}
+    optimal_flavor_choices: list = []
+    for index, ice_cream_price in enumerate(cost):
+        difference: int = money - ice_cream_price
+        if difference in hash_table:
+            optimal_flavor_choices.append(hash_table[difference])
+            optimal_flavor_choices.append(index + 1)
+            return sorted(optimal_flavor_choices)
+        hash_table[ice_cream_price] = index + 1
