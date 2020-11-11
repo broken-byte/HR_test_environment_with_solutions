@@ -1,5 +1,4 @@
 
-
 def max_array_sum(arr: list) -> int:
     maximum_sums: dict = {
         0: arr[0],
@@ -17,3 +16,4 @@ def max_array_sum(arr: list) -> int:
     last_index: int = len(arr) - 1
     maximum_non_adjacent_sub_sequence: int = maximum_sums[last_index]
     return maximum_non_adjacent_sub_sequence
+
