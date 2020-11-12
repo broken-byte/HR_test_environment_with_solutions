@@ -4,15 +4,15 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 
-def max_subset_sum(arr: list) -> int:
-    dp = {}  # key : max index of subarray, value = sum
-    dp[0], dp[1] = arr[0], max(arr[0], arr[1])
-    for i, num in enumerate(arr[2:], start=2):
-        logging.debug(f"dynamic programming dp: {dp}")
-        dp[i] = max(dp[i - 1], dp[i - 2] + num, dp[i - 2], num)
-    return dp[len(arr) - 1]
+# def max_subset_sum(arr: list) -> int:
+#     dp = {}  # key : max index of subarray, value = sum
+#     dp[0], dp[1] = arr[0], max(arr[0], arr[1])
+#     for i, num in enumerate(arr[2:], start=2):
+#         logging.debug(f"dynamic programming dp: {dp}")
+#         dp[i] = max(dp[i - 1], dp[i - 2] + num, dp[i - 2], num)
+#     return dp[len(arr) - 1]
 
-# TODO: Analyze the above solution and make your own
+# TODO: Analyze the above solution and make your own in optimal.py
 
 
 class SubSequenceGenerator:
@@ -56,6 +56,3 @@ class SubSequenceGenerator:
             # Add
             self.recursively_build_sub_sequences(sub + [self.array[current_i]], current_i + 1)
 
-
-if __name__ == '__main__':
-    max_subset_sum([-2, 1, 3])

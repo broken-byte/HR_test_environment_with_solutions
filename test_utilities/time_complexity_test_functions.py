@@ -8,6 +8,13 @@ def process_test_file_where_single_line_is_an_int_array(test_file_path: str) -> 
             return processed_data
 
 
+def process_test_file_where_single_line_is_a_str_array(test_file_path: str) -> list:
+    with open(test_file_path, "r") as f:
+        for line in f:
+            processed_data = convert_line_into_str_list(line)
+            return processed_data
+
+
 def process_test_file_where_lines_are_int_arrays(test_file_path: str, exclude_index: int = -1) -> list:
     processed_data: list = []
     with open(test_file_path, "r") as f:
