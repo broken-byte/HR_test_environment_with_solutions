@@ -10,7 +10,7 @@ def make_test_function(test_data: dict, function_to_be_tested):
         params: dict = test_data["params"]
         expected = test_data["expected"]
         actual = function_to_be_tested(**params)
-        self.assertEqual(expected, actual, function_to_be_tested.__name__)
+        self.assertEqual(expected, actual, f"algorithm being tested: {function_to_be_tested.__name__}")
     return test_template
 
 
