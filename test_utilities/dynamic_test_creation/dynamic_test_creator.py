@@ -1,4 +1,5 @@
 from unittest import TestCase, TestLoader, TextTestRunner
+from test_utilities.test_variables import console_break_line
 
 
 class TestContainerTemplate(TestCase):
@@ -10,6 +11,7 @@ def make_test_function(test_data: dict, function_to_be_tested):
         params: dict = test_data["params"]
         expected = test_data["expected"]
         actual = function_to_be_tested(**params)
+        print(console_break_line)
         self.assertEqual(expected, actual, f"algorithm being tested: {function_to_be_tested.__name__}")
     return test_template
 
