@@ -4,64 +4,62 @@ from test_utilities.dynamic_test_creation.dynamic_test_creator import dynamicall
 def brute_force_abbreviations(**kwargs) -> str:
     a: str = kwargs["a"]
     b: str = kwargs["b"]
-    abbrev: Abbreviation = Abbreviation(a, b)
-    if abbrev.can_a_become_b():
+    abbreviation: Abbreviation = Abbreviation(a, b)
+    result: bool = abbreviation.a_can_become_an_abbreviation_of_b()
+    print(f"final result: {result}")
+    if result:
         return "YES"
     else:
         return "NO"
-
-    # TODO: Fix test case 0 failure
-    # TODO: Fix test case 1 failure
 
 
 class Abbreviation:
     def __init__(self, a: str, b: str):
         self.a: str = a
         self.b: str = b
+        self.recursion_level: int = 0
 
-    def can_a_become_b(self) -> bool:
-        if self.a == self.b:
+    def a_can_become_an_abbreviation_of_b(self) -> bool:
+        return self.search_for_abbreviation(self.a, index=0)
+
+    def search_for_abbreviation(self, a: str, index: int) -> bool:
+        self.log_recursion(a, index)
+        self.recursion_level += 1
+        if a == self.b:
+            print(f"returning True, we found an abbreviation!")
             return True
-        if self.deletion_of_all_lowers_does_fix_a():
-            return True
-        elif self.capitalization_of_some_lowers_can_fix_a():
-            return True
-        elif self.b_is_too_large():
+        elif index == len(a):
             return False
+        a_letter: str = a[index]
+        b_letter: str = self.b[index] if index < len(self.b) else None
+        if a_letter.upper() == b_letter:
+            capitalized_a: str = self.capitalize_character_from_a_at(index, a)
+            return self.search_for_abbreviation(capitalized_a, index + 1)
         else:
-            return False
+            trimmed_a: str = self.trim_character_from_a_at(index, a)
+            return self.search_for_abbreviation(trimmed_a, index)
 
-    def deletion_of_all_lowers_does_fix_a(self) -> bool:
-        temporary_a: str = self.a
-        index: int = 0
-        while index < len(temporary_a):
-            letter: str = temporary_a[index]
-            if letter.islower():
-                if index == 0:
-                    temporary_a = temporary_a[index:]
-                else:
-                    left: str = temporary_a[:index]
-                    right: str = temporary_a[index + 1:]
-                    temporary_a = left + right
-                    index -= 1
-            index += 1
-        return temporary_a == self.b
+    def log_recursion(self, a: str, index: int):
+        logging_message: str = (f"====================\n"
+                                f"Recursion depth level: {self.recursion_level}\n"
+                                f"index: {index}\n"
+                                f"a: {a}\n"
+                                f"b: {self.b}")
+        print(logging_message)
 
-    def capitalization_of_some_lowers_can_fix_a(self):
-        for index, letter in enumerate(self.a):
-            if index < len(self.b) - 1:
-                if letter == self.b[index]:
-                    continue
-                elif self.capitalization_does_fix_a_at(index):
-                    continue
-                else:
-                    return False
+    @staticmethod
+    def capitalize_character_from_a_at(index: int, a: str) -> str:
+        if index == 0:
+            return a[index].upper() + a[index + 1:]
+        else:
+            return a[:index] + a[index].upper() + a[index + 1:]
 
-    def capitalization_does_fix_a_at(self, index: int) -> bool:
-        return self.a[index].upper() == self.b[index]
-
-    def b_is_too_large(self) -> bool:
-        return len(self.b) > len(self.a)
+    @staticmethod
+    def trim_character_from_a_at(index: int, a: str) -> str:
+        if index == 0:
+            return a[index + 1:]
+        else:
+            return a[:index] + a[index + 1:]
 
 
 if __name__ == '__main__':
@@ -97,5 +95,3 @@ if __name__ == '__main__':
     }
     dynamically_generate_tests(functionality_test_data, brute_force_abbreviations)
     run_dynamic_tests()
-
-
