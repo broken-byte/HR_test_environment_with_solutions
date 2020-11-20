@@ -2,8 +2,8 @@ from unittest import TestCase, main
 import os
 
 from searching.medium_problems.pairs.pairs_brute_force import pairs_brute_force
-from test_utilities.time_complexity_test_functions import get_console_time_logged_result_of
-from test_utilities.time_complexity_test_functions import process_test_file_where_single_line_is_an_int_array
+from test_utilities.time_complexity_file_processing_functions import get_console_time_logged_result_of
+from test_utilities.time_complexity_file_processing_functions import process_test_file_where_single_line_is_an_int_array
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"

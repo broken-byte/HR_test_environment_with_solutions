@@ -2,8 +2,8 @@ from unittest import TestCase, main
 import os
 
 from greedy_algorithms.easy_problems.minimum_absolute_difference_in_an_array.minimum_absolute_difference_algs import *
-from test_utilities.time_complexity_test_functions import process_test_file_where_lines_are_int_arrays
-from test_utilities.time_complexity_test_functions import get_console_time_logged_result_of
+from test_utilities.time_complexity_file_processing_functions import process_test_file_where_lines_are_int_arrays
+from test_utilities.time_complexity_file_processing_functions import get_console_time_logged_result_of
 from test_utilities.test_variables import console_break_line
 
 current_path = os.path.dirname(__file__)
