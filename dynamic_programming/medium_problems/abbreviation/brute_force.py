@@ -36,9 +36,11 @@ class Abbreviation:
         if a_letter.upper() == b_letter:
             capitalized_a: str = self.capitalize_character_from_a_at(index, a)
             return self.search_for_abbreviation(capitalized_a, index + 1)
-        else:
+        elif a_letter.islower():
             trimmed_a: str = self.trim_character_from_a_at(index, a)
             return self.search_for_abbreviation(trimmed_a, index)
+        else:
+            return False
 
     def log_recursion(self, a: str, index: int):
         logging_message: str = (f"====================\n"
@@ -101,5 +103,5 @@ if __name__ == '__main__':
             "expected": "NO"
         },
     }
-    dynamically_generate_tests(functionality_test_data, brute_force_abbreviations, timed=True)
+    dynamically_generate_tests(functionality_test_data, brute_force_abbreviations)
     run_dynamic_tests()
