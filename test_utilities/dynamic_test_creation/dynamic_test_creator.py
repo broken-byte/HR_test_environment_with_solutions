@@ -56,4 +56,4 @@ def dynamically_generate_tests(data: dict, function_being_tested, timed: bool = 
 
 def run_dynamic_tests():
     suite = TestLoader().loadTestsFromTestCase(FunctionalityTestContainerTemplate)
-    TextTestRunner(verbosity=2).run(suite)
+    TextTestRunner(verbosity=1).run(suite)

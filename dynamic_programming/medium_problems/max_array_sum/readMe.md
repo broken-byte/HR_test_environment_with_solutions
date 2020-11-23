@@ -26,3 +26,7 @@ maxSubsetSum has the following parameter(s):
 
 ### Output Format
 Return the maximum sum described in the statement.
+
+### Caveat
+I couldn't figure this one out on my own, so I rewrote a solution 
+I found inside of optimal.py! Hopefully it's readable :)

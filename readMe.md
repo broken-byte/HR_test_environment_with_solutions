@@ -18,7 +18,31 @@ tests.
 The repo is divided up into different topics from data structures & algorithms,i.e., 
 sorting, arrays, greedy algorithms, etc. (not including the test_utilities directory)
 
-It is further divided into easy, medium, hard, and advanced problem sets for each topic. 
+It is further divided into easy, medium, hard, and advanced problem sets for each topic.
+
+The repo is FURTHER divided into the problems themselves, which are further divided into:
+- test_resources
+- brute_force.py
+- optimal.py
+- (sometimes) hacker_rank_submission.py
+- readMe.md
+- (sometimes) some pngs for the readMe when I need it
+
+I specify the problem in the readMe, store the test data in test_resources, sometimes have 
+a final formatted solution for the hacker rank IDE if Hacker Rank is picky with the solution,
+and have my regular solutions in the two .py files: 
+ 
+- brute_force.py:
+Has the brunt solution that likely doesn't meet the time complexity 
+requirements but DOES meet the functionality requirements.
+
+2. optimal.py:
+Meets both the time complexity requirements AND the functionality requirements. 
+
+
+If there's only one or the other, it means I either solved it completely with the
+brute force attempt, OR I didn't solve it on my own and got some help. I'll specify
+in the respective readMe's of each problem :)
 
 Some problems from the HackerRank Interview Prep Kit are omitted from here since they were either:
 1. Too easy to warrant a full test suite + file structure and were solved
@@ -57,11 +81,11 @@ How to Use
 ------------
  I've already written test data for the challenges I've done. all the test data is in the 
  respective directories of each challenge, inside the test_resources folder. I've separated
- the functionality tests from the time complexity tests in the respectively named files.
+ the functionality tests from the time complexity tests in their respectively named files.
  
  ###Example 0
  
- I have a challenge called 
+ I have a challenge
 
 Feel free to shoot me any questions regarding this repo! Happy coding! <3
 

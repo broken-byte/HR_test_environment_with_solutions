@@ -1,5 +1,11 @@
+from test_utilities.dynamic_test_creation.dynamic_test_creator import \
+    dynamically_generate_tests, run_dynamic_tests
+from dynamic_programming.medium_problems.max_array_sum.test_resources.functionality_test_data import \
+    functionality_test_data
 
-def max_array_sum(arr: list) -> int:
+
+def optimal_max_array_sum(**kwargs) -> int:
+    arr: list = kwargs["arr"]
     maximum_sums: dict = {
         0: arr[0],
         1: max(arr[0], arr[1])
@@ -17,3 +23,7 @@ def max_array_sum(arr: list) -> int:
     maximum_non_adjacent_sub_sequence: int = maximum_sums[last_index]
     return maximum_non_adjacent_sub_sequence
 
+
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, optimal_max_array_sum)
+    run_dynamic_tests()

@@ -1,5 +1,10 @@
 import logging
 
+'''
+I couldn't figure this one out on my own, so I rewrote a solution 
+I found inside of optimal.py! Hopefully it's readable :)
+The only thing in here is my shoddy attempts, haha!
+'''
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -56,3 +61,6 @@ class SubSequenceGenerator:
             # Add
             self.recursively_build_sub_sequences(sub + [self.array[current_i]], current_i + 1)
 
+
+if __name__ == '__main__':
+ pass
