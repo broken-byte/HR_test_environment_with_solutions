@@ -4,7 +4,8 @@ from test_utilities.test_variables import test_suite_separation_line
 from arrays.medium_problems.minimum_swaps.test_resources.functionality_test_data import functionality_test_data
 
 
-def min_swaps(a):
+def min_swaps(**kwargs):
+    a: list = kwargs["a"]
     # Initialize variables for the solution and the list length
     minSwaps = 0
     n = len(a)
