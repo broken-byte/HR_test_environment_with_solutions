@@ -62,5 +62,5 @@ def min_swaps(**kwargs):
 
 
 if __name__ == '__main__':
-    dynamically_generate_tests(functionality_test_data, min_swaps)
+    dynamically_generate_tests(functionality_test_data, min_swaps, timed=True, timeout=4)
     run_dynamic_tests()

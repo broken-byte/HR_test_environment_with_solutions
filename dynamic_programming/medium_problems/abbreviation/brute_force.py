@@ -2,6 +2,8 @@ from test_utilities.dynamic_test_creation.dynamic_test_creator import \
     dynamically_generate_tests, run_dynamic_tests
 from dynamic_programming.medium_problems.abbreviation.test_resources.functionality_test_data import \
     functionality_test_data
+from tools.strings.string_transformers import delete_character_at, capitalize_character_at
+from tools.logging.recursion import log_recursion
 
 
 def brute_force_abbreviations(**kwargs) -> str:
@@ -26,7 +28,7 @@ class Abbreviation:
         return self.search_for_abbreviation(self.a, index=0)
 
     def search_for_abbreviation(self, a: str, index: int) -> bool:
-        self.log_recursion(a, index)
+        log_recursion(self.recursion_level, a=a, b=self.b, index=index)
         self.recursion_level += 1
         if a == self.b:
             print(f"returning True, we found an abbreviation!")
@@ -36,37 +38,15 @@ class Abbreviation:
         a_letter: str = a[index]
         b_letter: str = self.b[index] if index < len(self.b) else None
         if a_letter.upper() == b_letter:
-            capitalized_a: str = self.capitalize_character_from_a_at(index, a)
+            capitalized_a: str = capitalize_character_at(index, a)
             return self.search_for_abbreviation(capitalized_a, index + 1)
         elif a_letter.islower():
-            trimmed_a: str = self.trim_character_from_a_at(index, a)
+            trimmed_a: str = delete_character_at(index, a)
             return self.search_for_abbreviation(trimmed_a, index)
         else:
             return False
 
-    def log_recursion(self, a: str, index: int):
-        logging_message: str = (f"====================\n"
-                                f"Recursion depth level: {self.recursion_level}\n"
-                                f"index: {index}\n"
-                                f"a: {a}\n"
-                                f"b: {self.b}")
-        print(logging_message)
-
-    @staticmethod
-    def capitalize_character_from_a_at(index: int, a: str) -> str:
-        if index == 0:
-            return a[index].upper() + a[index + 1:]
-        else:
-            return a[:index] + a[index].upper() + a[index + 1:]
-
-    @staticmethod
-    def trim_character_from_a_at(index: int, a: str) -> str:
-        if index == 0:
-            return a[index + 1:]
-        else:
-            return a[:index] + a[index + 1:]
-
 
 if __name__ == '__main__':
-    dynamically_generate_tests(functionality_test_data, brute_force_abbreviations)
+    dynamically_generate_tests(functionality_test_data, brute_force_abbreviations, timed=True)
     run_dynamic_tests()
