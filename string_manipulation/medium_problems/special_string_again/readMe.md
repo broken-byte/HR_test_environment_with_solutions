@@ -1,8 +1,8 @@
 Special String Again
-------
+=====================
 
-[Special String Again HackerRank Link](https://www.hackerrank.com/challenges/special-palindrome-again/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
-
+Description
+-----------
 A string is said to be a special string if either of two conditions is met:
 
 - All of the characters are the same, e.g. aaa.
@@ -12,7 +12,8 @@ A special substring is any substring of a string which meets one of those criter
 
 For example, given the string s = mnonopoo, we have the following special substrings: {m, n, o, n, o, p, o, o, non, ono, opo, oo}.
 
-### Function Description
+Function Description
+--------------------
 
 Complete the substrCount function in the editor below. It should return an integer representing the number of special substrings that can be formed from the given string.
 
@@ -20,3 +21,5 @@ substrCount has the following parameter(s):
 
 n: an integer, the length of string s
 s: a string
+
+[Special String Again HackerRank Link](https://www.hackerrank.com/challenges/special-palindrome-again/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
