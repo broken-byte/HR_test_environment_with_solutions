@@ -1,6 +1,6 @@
 
 
-def log_recursion(recursion_level: int, testable: bool = False, **kwargs):
+def log_recursion(recursion_level: int, testable: bool = False, **kwargs) -> str:
     logging_message: str = (f"=============== Recursion Logger ===============\n"
                             f"Recursion level: {recursion_level}\n")
     for parameter, value in kwargs.items():

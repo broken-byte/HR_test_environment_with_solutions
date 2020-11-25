@@ -9,7 +9,7 @@ from tools.logging.recursion import log_recursion
 def brute_force_abbreviations(**kwargs) -> str:
     a: str = kwargs["a"]
     b: str = kwargs["b"]
-    abbreviation: Abbreviation = Abbreviation(a, b)
+    abbreviation: AbbreviationChecker = AbbreviationChecker(a, b)
     result: bool = abbreviation.a_can_become_an_abbreviation_of_b()
     print(f"final result: {result}")
     if result:
@@ -18,7 +18,7 @@ def brute_force_abbreviations(**kwargs) -> str:
         return "NO"
 
 
-class Abbreviation:
+class AbbreviationChecker:
     def __init__(self, a: str, b: str):
         self.a: str = a
         self.b: str = b
