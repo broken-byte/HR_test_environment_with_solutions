@@ -1,5 +1,7 @@
-The HackerRank Interview Prep Kit Solution Stash/ Test Environment!
+The HackerRank Interview Prep Kit Solution Stash/Test Environment!
 -------------------------------------------------------------------
+Description
+-----------
 This repo is both a stash of my solutions to the Hacker Rank Interview 
 Prep Kit AND a a testing environment that makes it easy to do the challenges
 On your local machine. 
