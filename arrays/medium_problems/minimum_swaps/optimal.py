@@ -1,6 +1,5 @@
-from test_utilities.dynamic_test_creation.dynamic_test_creator import \
+from test_utilities.dynamic_test_creator import \
     dynamically_generate_tests, run_dynamic_tests
-from test_utilities.test_variables import test_suite_separation_line
 from arrays.medium_problems.minimum_swaps.test_resources.functionality_test_data import functionality_test_data
 
 

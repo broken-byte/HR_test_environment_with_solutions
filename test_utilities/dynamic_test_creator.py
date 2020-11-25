@@ -46,8 +46,8 @@ def complexity_timer(function_template):
     return wrapper_timer
 
 
-def dynamically_generate_tests(test: dict, function_being_tested, timed: bool = False, timeout: int = 60):
-    for t_name, t_data in iter(test.items()):
+def dynamically_generate_tests(tests: dict, function_being_tested, timed: bool = False, timeout: int = 60):
+    for t_name, t_data in iter(tests.items()):
         unittest_function = make_test_function(t_name, t_data, function_being_tested, timed=timed, timeout=timeout)
         setattr(TestContainerTemplate, f"{t_name}", unittest_function)
 

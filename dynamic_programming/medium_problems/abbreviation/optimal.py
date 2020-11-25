@@ -1,10 +1,9 @@
-from test_utilities.dynamic_test_creation.dynamic_test_creator import \
+from test_utilities.dynamic_test_creator import \
     dynamically_generate_tests, run_dynamic_tests
 from dynamic_programming.medium_problems.abbreviation.test_resources.functionality_test_data import \
     functionality_test_data
 from dynamic_programming.medium_problems.abbreviation.test_resources.time_complexity_test_data import \
     time_complexity_test_data
-from tools.strings.string_transformers import delete_character_at, capitalize_character_at
 from tools.logging.recursion import log_recursion
 
 

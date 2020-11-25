@@ -1,4 +1,4 @@
-from test_utilities.dynamic_test_creation.dynamic_test_creator import \
+from test_utilities.dynamic_test_creator import \
     dynamically_generate_tests, run_dynamic_tests
 from dynamic_programming.medium_problems.max_array_sum.test_resources.functionality_test_data import \
     functionality_test_data
