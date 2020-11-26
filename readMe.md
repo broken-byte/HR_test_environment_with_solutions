@@ -199,7 +199,7 @@ if __name__ == '__main__':
 ```
 Now, when you run the tests, you should see how long your function took in your IDE console. 
 (in seconds). By default, there exists a timeout of 60 seconds, so if your function takes longer
-than that, it fill stop and save your computer LOL. To reduce or increase that number, simply
+than that, it will stop and save your computer. To reduce or increase that number, simply
 specify the timeout parameter:
 ```
 if __name__ == '__main__':
