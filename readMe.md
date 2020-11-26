@@ -91,9 +91,9 @@ Installation
     
 6. Specify your SDK. This synchronizes your IDE with the virtual environment we created in step 3.
     
-    in Pycharm, simply go to Preferences -> Project -> Project Interpreter and python interpreter
+    in Pycharm, simply go to Preferences -> Project -> Project Interpreter and in the python interpreter
     drop down select the Python source that lies in your virtual env directory. Mine is in 
-    env/bin/python
+    env/bin/python.
     
 5. You're all set! :)
 
@@ -107,7 +107,7 @@ How to Use
  I have a challenge called Fraudulent Activity, and it has some functional tests and some time
  complexity tests on Hacker Rank. so, I get the functional tests from the problem page and the 
  time complexity tests from the test file download link on that same page that appears once you run
- the tests. I make a functionality_test_data dictionary as such:
+ the tests in their web IDE. I make a functionality_test_data dictionary as such:
  ```
 functionality_test_data: dict = {
     "test_0": {
@@ -134,7 +134,8 @@ functionality_test_data: dict = {
 }
 ```
 As you can see, the params for the function you want to test need to be specified explicitly here.
-That's important for the dynamic test creation part.
+That's important for the dynamic test creation part. Also, every test name NEEDS to start with "test",
+since im using the built in unittest framework and it will only run tests named "test_...".
 
 I then make a time complexity test file like so:
 ```
@@ -180,6 +181,13 @@ if __name__ == '__main__':
 And VOILA! I now simply run the file and a full, data driven suite of tests is automatically 
 generated and run, with full text output in you console!
 
+For the time complexity tests, I like to combine the functional and time complexity tests into one
+dictionary so that they all run in the same test suite, like so:
+```
+functionality_test_data.update(time_complexity_test_data)
+    dynamically_generate_tests(functionality_test_data, fraudulent_notifications)
+    run_dynamic_tests()
+```
 The dynamic_test generator has some additional configurability, such as timing and a timeout so
 your computer doesn't crash on those crazy long time complexity tests.
 
@@ -192,14 +200,21 @@ if __name__ == '__main__':
 Now, when you run the tests, you should see how long your function took in your IDE console. 
 (in seconds). By default, there exists a timeout of 60 seconds, so if your function takes longer
 than that, it fill stop and save your computer LOL. To reduce or increase that number, simply
-specify the timeout paramater:
+specify the timeout parameter:
 ```
 if __name__ == '__main__':
-    dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timed=True, timeout=3)
+    dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timeout=3)
     run_dynamic_tests()
 ```
 Here I set it to 3 seconds!
 
+And, of course, you can time AND have a timeout:
+```
+if __name__ == "__main__":
+    functionality_test_data.update(time_complexity_test_data)
+    dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timed=True, timeout=3)
+    run_dynamic_tests()
+```
 #### Example (if you want to you use whats already here)
  Simply use the structure above that I already have for each problem! I have solutions for
  all of the problems here, so feel free to garner some insight from them if you get stuck.
