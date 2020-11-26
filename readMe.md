@@ -89,7 +89,7 @@ How to Use
  respective directories of each challenge, inside the test_resources folder. I've separated
  the functionality tests from the time complexity tests in their respectively named files.
  
- ####Example (if you want to add a new problem from Hacker Rank)
+ #### Example (if you want to add a new problem from Hacker Rank)
  I have a challenge called Fraudulent Activity, and it has some functional tests and some time
  complexity tests on Hacker Rank. so, I get the functional tests from the problem page and the 
  time complexity tests from the test file download link on that same page that appears once you run
@@ -166,7 +166,7 @@ if __name__ == '__main__':
 And VOILA! I now simply run the file and a full, data driven suite of tests is automatically 
 generated and run, with full text output in you console!
 
-####Example (if you want to you use whats already here)
+#### Example (if you want to you use whats already here)
  Simply use the structure above that I already have for each problem! I have solutions for
  all of the problems here, so feel free to garner some insight from them if you get stuck.
 
