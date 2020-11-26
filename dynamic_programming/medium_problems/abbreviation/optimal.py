@@ -8,9 +8,7 @@ from tools.logging.recursion import log_recursion
 from tools.strings.string_transformers import capitalize_character_at, delete_character_at
 
 
-def optimal_abbreviations(**kwargs) -> str:
-    a: str = kwargs["a"]
-    b: str = kwargs["b"]
+def optimal_abbreviations(a: str, b: str) -> str:
     abbreviation: AbbreviationChecker = AbbreviationChecker(a, b)
     result: bool = abbreviation.a_can_become_an_abbreviation_of_b()
     print(f"final result: {result}")
