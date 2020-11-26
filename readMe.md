@@ -4,7 +4,7 @@ Description
 -----------
 This repo is both a stash of my solutions to the Hacker Rank Interview 
 Prep Kit AND a a testing environment that makes it easy to do the challenges
-On your local machine. 
+on your local machine. 
 
 Common problems I encounter in integrated web IDE's like the one featured 
 on HackerRank is the lack of good linting and/or not enough feedback on test
@@ -18,9 +18,9 @@ that Hacker Rank provides which contain the SUPER long test data for time comple
 tests.
 
 I ALSO added created a tools directory with common algorithm things I found myself repeating,
-so feel free to use those with confidence as I have unit tests to validate their utility
+so feel free to use those with confidence as I have unit tests to validate their utility.
 
-The repo is divided up into different topics from data structures & algorithms,i.e., 
+The repo is divided up into different topics from data structures & algorithms, i.e., 
 sorting, arrays, greedy algorithms, etc. (omitting the test_facilities and tools directory, of course)
 
 It is further divided into easy, medium, hard, and advanced problem sets for each topic.
@@ -35,7 +35,7 @@ The repo is FURTHER divided into the problems themselves, which contain:
 
 I specify the problem in the readMe file, store the test data in the test_resources directory, sometimes have 
 a final formatted solution for the hacker rank IDE if Hacker Rank is picky with the solution in the 
-hacker_rank_submission.py file, and have my regular solutions in the two .py files: 
+hacker_rank_submission.py file, and have my solutions in the two .py files: 
  
 1. brute_force.py:
 Has the brunt solution that likely doesn't meet the time complexity 
@@ -80,6 +80,20 @@ Installation
     `pip install -r dependencies.txt`
     
     to install the dependencies for the test environment. 
+    
+5. Specify the the source/root directory in your IDE. This is super important as Python needs a
+    root directory so that it can import things correctly. 
+    
+    I use PyCharm Community Edition (I highly suggest you do the
+    same for Python development) so to specify the source I go to Preferences -> Project -> 
+    Project Structure and right click the top level of this git repo and check "Sources". The
+    top level directory should now be blue or some such color depending on your IDE theme. 
+    
+6. Specify your SDK. This synchronizes your IDE with the virtual environment we created in step 3.
+    
+    in Pycharm, simply go to Preferences -> Project -> Project Interpreter and python interpreter
+    drop down select the Python source that lies in your virtual env directory. Mine is in 
+    env/bin/python
     
 5. You're all set! :)
 
@@ -165,6 +179,26 @@ if __name__ == '__main__':
 ```
 And VOILA! I now simply run the file and a full, data driven suite of tests is automatically 
 generated and run, with full text output in you console!
+
+The dynamic_test generator has some additional configurability, such as timing and a timeout so
+your computer doesn't crash on those crazy long time complexity tests.
+
+For example, if I wanted to add timing to the tests, I would simply do the following:
+```
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timed=True)
+    run_dynamic_tests()
+```
+Now, when you run the tests, you should see how long your function took in your IDE console. 
+(in seconds). By default, there exists a timeout of 60 seconds, so if your function takes longer
+than that, it fill stop and save your computer LOL. To reduce or increase that number, simply
+specify the timeout paramater:
+```
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timed=True, timeout=3)
+    run_dynamic_tests()
+```
+Here I set it to 3 seconds!
 
 #### Example (if you want to you use whats already here)
  Simply use the structure above that I already have for each problem! I have solutions for
