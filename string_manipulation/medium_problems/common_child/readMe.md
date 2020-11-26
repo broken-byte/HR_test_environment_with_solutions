@@ -1,6 +1,5 @@
-## Common Child
-
--------
+Common Child
+=============
 
 [Common Child HackerRank Link](https://www.hackerrank.com/challenges/common-child/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings)
 
@@ -11,14 +10,18 @@ it is a child of both?
 
 Essentially, what's the longest common subsequence?
 
-### Function Description
+Function Description
+---------------------
 
-Complete the commonChild function. It should return the longest string which is a common child of the input strings.
+Complete the commonChild function. It should return the longest string 
+which is a common child of the input strings.
 
 commonChild has the following parameter(s):
 
 s1, s2: two equal length strings
 
-## Note
+Note
+----
 
-This problem was HARD! It requires a great knowledge of recursion and dynamic programming to solve! What a ride :D
+This problem was HARD! It requires a great knowledge of recursion and dynamic 
+programming to solve! What a ride :D

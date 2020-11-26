@@ -3,7 +3,7 @@ from test_utilities.dynamic_test_creator import \
 from string_manipulation.medium_problems.special_string_again.test_resources.functionality_test_data import \
     functionality_test_data
 from tools.iterables.sub_iterables import \
-    number_of_sub_arrays_in_an_iterable
+    get_number_of_sub_arrays_in_an_iterable
 
 
 def substr_count_slow(n: int, s: str) -> int: # O(n^2)
@@ -14,7 +14,7 @@ def substr_count_slow(n: int, s: str) -> int: # O(n^2)
         Time Complexity: O(N^2)
     """
     if all_chars_equal(s):
-        return number_of_sub_arrays_in_an_iterable(n)  # Efficient for all equal case
+        return get_number_of_sub_arrays_in_an_iterable(n)  # Efficient for all equal case
     sub_strings = get_sub_strings_greater_than_length_one(n, s)  # O(n^2)
     special_string_count = n
     for sub in sub_strings:  # ~= O(n)* O(n) = O(n^2)

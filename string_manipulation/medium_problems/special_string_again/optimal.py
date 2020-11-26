@@ -5,7 +5,7 @@ from string_manipulation.medium_problems.special_string_again.test_resources.fun
 from string_manipulation.medium_problems.special_string_again.test_resources.time_complexity_test_data import \
     time_complexity_test_data
 from tools.iterables.sub_iterables import \
-    number_of_sub_arrays_in_an_iterable
+    get_number_of_sub_arrays_in_an_iterable
 
 
 def substr_count(n: int, s: str)-> int: # O(N)
@@ -22,7 +22,7 @@ def substr_count(n: int, s: str)-> int: # O(N)
         else:
             # Use math formula for # of subs in a string minus each individual
             # character count (already counted that up top)
-            nested_special_strings_so_far = number_of_sub_arrays_in_an_iterable(consecutive_character_count)
+            nested_special_strings_so_far = get_number_of_sub_arrays_in_an_iterable(consecutive_character_count)
             special_string_count +=  nested_special_strings_so_far - consecutive_character_count
             # Start branching out from first dissimilar character to check if
             # Middle char special string
@@ -44,7 +44,7 @@ def substr_count(n: int, s: str)-> int: # O(N)
     # Check to see if we've looped through a long chain of consecutive chars
     # Without end
     if consecutive_character_count > 1:
-        nested_special_strings_so_far = number_of_sub_arrays_in_an_iterable(consecutive_character_count)
+        nested_special_strings_so_far = get_number_of_sub_arrays_in_an_iterable(consecutive_character_count)
         special_string_count += nested_special_strings_so_far - consecutive_character_count
 
     return special_string_count
