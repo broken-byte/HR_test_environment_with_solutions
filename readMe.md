@@ -29,9 +29,11 @@ The repo is FURTHER divided into the problems themselves, which contain:
 - test_resources
 - brute_force.py
 - optimal.py
-- (sometimes) hacker_rank_submission.py
 - readMe.md
+- (sometimes) hacker_rank_submission.py
 - (sometimes) some pngs for the readMe when I need it
+- (sometimes) a class for the solutions, something like: brute_force_as_class.py or the 
+    actual name of the class, i.e. ExpenditureQueue.py 
 
 I specify the problem in the readMe file, store the test data in the test_resources directory, sometimes have 
 a final formatted solution for the hacker rank IDE if Hacker Rank is picky with the solution in the 
