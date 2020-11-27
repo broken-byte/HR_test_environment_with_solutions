@@ -1,27 +1,32 @@
 '''
 Solved on first attempt! :D
 '''
-def checkMagazine(magazine, note):
-    # O(N) - MagazineMap = dictionary of key = word, value = number of instances of word
-    magazineMap = {}
+
+
+def check_magazine(magazine, note):
+    # O(N) - MagazineMap = dictionary of key = word, value = number of
+    # instances of word
+    magazine_map = {}
     for word in magazine:
-        if word in magazineMap:
-            magazineMap[word] += 1
+        if word in magazine_map:
+            magazine_map[word] += 1
         else:
-            magazineMap[word] = 1
+            magazine_map[word] = 1
 
     # O(N) check words in note against magazineMap
     for word in note:
-        if word not in magazineMap: 
+        if word not in magazine_map:
             return "No"
 
-        elif magazineMap[word] == 0:
+        elif magazine_map[word] == 0:
             return "No"
 
-        else: magazineMap[word] -= 1
-    
+        else:
+            magazine_map[word] -= 1
+
     # O(N + N) ~= O(2N) ~= O(N)
     return "Yes"
+
 
 if __name__ == "__main__":
     pass
