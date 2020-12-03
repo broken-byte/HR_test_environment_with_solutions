@@ -1,9 +1,8 @@
 
 
-def optimal_abbreviations(a: str, b: str) -> str:
+def abbreviation(a: str, b: str) -> str:
     abbreviation_checker: AbbreviationChecker = AbbreviationChecker(a, b)
-    result: bool = abbreviation_checker.can_make_abbreviation()
-    if result:
+    if abbreviation_checker.can_make_abbreviation():
         return "YES"
     else:
         return "NO"
@@ -21,14 +20,11 @@ class AbbreviationChecker:
         self.search_for_abbreviation(self.a, 0, 0)
         return self.can_abbreviate
 
-    def search_for_abbreviation(self, a: str, index: int, recursion_level: int) -> bool:
+    def search_for_abbreviation(self, a: str, index: int, recursion_level: int):
         if a == self.b:
-            recursion_level -= 1
             self.can_abbreviate = True
             self.continue_searching = False
-        elif len(a) < len(self.b):
-            recursion_level -= 1
-        else:
+        elif len(a) > len(self.b):
             a_letter: str = a[index]
             b_letter: str = self.b[index] if index < len(self.b) else None
             if self.continue_searching and self.deletion_is_possible(a_letter):

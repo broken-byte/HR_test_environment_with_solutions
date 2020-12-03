@@ -41,4 +41,18 @@ functionality_test_data: dict = {
         },
         "expected": "NO"
     },
+    "test_6": {
+        "params": {
+            "a": "beFgH",
+            "b": "EFH"
+        },
+        "expected": "YES"
+    },
+    "test_7": {
+        "params": {
+            "a": "beFgH",
+            "b": "EFG"
+        },
+        "expected": "NO"
+    },
 }
