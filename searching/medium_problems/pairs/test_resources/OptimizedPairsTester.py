@@ -1,7 +1,7 @@
 from unittest import TestCase, main, skip
 import os
 
-from searching.medium_problems.pairs.pairs_optimized import pairs_optimized
+from searching.medium_problems.pairs.optimal import pairs_optimized
 from test_utilities.time_complexity_file_processing_functions import get_console_time_logged_result_of
 from test_utilities.time_complexity_file_processing_functions import process_test_file_where_single_line_is_an_int_array
 
