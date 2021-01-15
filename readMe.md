@@ -52,7 +52,7 @@ brute force attempt, OR I didn't solve it on my own and got some help.
 
 Some problems from the HackerRank Interview Prep Kit are omitted from here since they were either:
 1. Too easy to warrant a full test suite + file structure and were solved
-within hacker rank's awesome integrated web IDE (which is awesome), or,
+within hacker rank's integrated web IDE, or,
 2. Not well worded or too tedious to replicate in this environment.
 
 However, I'll do my best to not omit stuff :)
