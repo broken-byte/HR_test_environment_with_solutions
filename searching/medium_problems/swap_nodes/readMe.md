@@ -2,6 +2,11 @@
 
 [Swap Nodes HackerRank Link](https://www.hackerrank.com/challenges/swap-nodes-algo/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=search)
 
+###A Note About the File Structure...
+Since this problem was mostly a test of architecture and abstraction (IMHO) I have forgone the dynamic test suite runner
+in favor of more explicit, bespoke tests for the various components made to solve the problem. The solution is in the 
+brute force file, with tests for each component in the tests folder. 
+
 ###Problem
 A binary tree is a tree which is characterized by one of the following properties:
 

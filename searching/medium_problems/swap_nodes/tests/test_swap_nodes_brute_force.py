@@ -1,7 +1,7 @@
 from unittest import TestCase, main
 import os
 
-from searching.medium_problems.swap_nodes.swap_nodes_brute_force import swap_nodes_brute_force
+from searching.medium_problems.swap_nodes.brute_force import swap_nodes_brute_force
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"

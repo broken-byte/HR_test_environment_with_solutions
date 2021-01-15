@@ -1,6 +1,8 @@
+from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
+from searching.medium_problems.triple_sum.test_resources.functionality_test_data import functionality_test_data
 
 
-def triple_sum_brute_force(a: list, b: list, c: list) -> int:
+def triple_sum(a: list, b: list, c: list) -> int:
     triplet: list = []
     triplets: set = set([])
     for p in a:
@@ -23,3 +25,8 @@ def triple_sum_brute_force(a: list, b: list, c: list) -> int:
                     continue
             triplet.pop()  # remove old q
     return len(triplets)
+
+
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, triple_sum)
+    run_dynamic_tests()

@@ -2,6 +2,7 @@ import bisect
 
 from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
 from searching.medium_problems.triple_sum.test_resources.functionality_test_data import functionality_test_data
+from searching.medium_problems.triple_sum.test_resources.time_complexity_test_data import time_complexity_test_data
 
 
 def triple_sum(a: list, b: list, c: list) -> int:  # O(b*{log(a) + log(c)})
@@ -60,4 +61,6 @@ class TripletCounter:
 
 
 if __name__ == '__main__':
-    pass
+    functionality_test_data.update(time_complexity_test_data)
+    dynamically_generate_tests(functionality_test_data, triple_sum, timed=True)
+    run_dynamic_tests()
