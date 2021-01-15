@@ -1,4 +1,4 @@
-The HackerRank Interview Prep Kit Solution Stash/Test Environment!
+The HackerRank Interview Prep Kit Test Environment!
 ==================================================================
 Description
 -----------
