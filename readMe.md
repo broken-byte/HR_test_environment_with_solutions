@@ -3,21 +3,21 @@ The HackerRank Interview Prep Kit Solution Stash/Test Environment!
 Description
 -----------
 This repo is both a stash of my solutions to the Hacker Rank Interview 
-Prep Kit AND a a testing environment that makes it easy to do the challenges
+Prep Kit AND a testing environment that makes it easy to do the challenges
 on your local machine. 
 
 Common problems I encounter in integrated web IDE's like the one featured 
 on HackerRank is the lack of good linting and/or not enough feedback on test
 failures (especially on the long time complexity tests). Inevitably I found 
-myself copy pasting the test data and making my own tests.
+myself copying and pasting the test data and making my own tests.
 
-Pretty soon I got tired of rewriting unit tests so I wrote code inside of the
-test_utilities directory that makes dynamically generated tests given the test data and 
-the function you wanna test. I've also added code to process the text files
+Pretty soon I got tired of rewriting unit tests, so I wrote code inside the
+test_utilities directory that makes dynamically generated tests given the test data, and 
+the function you want to test. I've also added code to process the text files
 that Hacker Rank provides which contain the SUPER long test data for time complexity
 tests.
 
-I ALSO added created a tools directory with common algorithm things I found myself repeating,
+I ALSO added created a tools' directory with common algorithm things I found myself repeating,
 so feel free to use those with confidence as I have unit tests to validate their utility.
 
 The repo is divided up into different topics from data structures & algorithms, i.e., 
@@ -32,7 +32,7 @@ The repo is FURTHER divided into the problems themselves, which contain:
 - readMe.md
 - (sometimes) hacker_rank_submission.py
 - (sometimes) some pngs for the readMe when I need it
-- (sometimes) a class(es) for the solutions. Something like a classes directory or the 
+- (sometimes) A class(es) for the solutions. It would look something like a class directory, or the 
     actual name of the class, i.e., ExpenditureQueue.py.
 
 I specify the problem in the readMe file, store the test data in the test_resources directory, sometimes have 
@@ -69,7 +69,7 @@ Installation
     
     `pip install virtualenv`
     
-    If you haven't installed pip, its a package manager for Python, so look it up and install :)
+    If you haven't installed pip, it's a package manager for Python, so look it up and install :)
 3. run:
 
     `source env/bin/activate`
@@ -83,18 +83,18 @@ Installation
     
     to install the dependencies for the test environment. 
     
-5. Specify the the source/root directory in your IDE. This is super important as Python needs a
+5. Specify the source/root directory in your IDE. This is super important as Python needs a
     root directory so that it can import things correctly. 
     
     I use PyCharm Community Edition (I highly suggest you do the
     same for Python development) so to specify the source I go to Preferences -> Project -> 
     Project Structure and right click the top level of this git repo and check "Sources". The
-    top level directory should now be blue or some such color depending on your IDE theme. 
+    top level directory should now be blue, or some such color depending on your IDE theme. 
     
 6. Specify your SDK. This synchronizes your IDE with the virtual environment we created in step 3.
     
     in Pycharm, simply go to Preferences -> Project -> Project Interpreter and in the python interpreter
-    drop down select the Python source that lies in your virtual env directory. Mine is in 
+    drop-down select the Python source that lies in your virtual env directory. Mine is in 
     env/bin/python.
     
 5. You're all set! :)
@@ -106,8 +106,8 @@ How to Use
  the functionality tests from the time complexity tests in their respectively named files.
  
  #### Example (if you want to add a new problem from Hacker Rank)
- I have a challenge called Fraudulent Activity, and it has some functional tests and some time
- complexity tests on Hacker Rank. so, I get the functional tests from the problem page and the 
+ I have a challenge called Fraudulent Activity, and it has some functional tests, and some time
+ complexity tests on Hacker Rank. So, I get the functional tests from the problem page, and the 
  time complexity tests from the test file download link on that same page that appears once you run
  the tests in their web IDE. I make a functionality_test_data dictionary as such:
  ```
@@ -137,7 +137,7 @@ functionality_test_data: dict = {
 ```
 As you can see, the params for the function you want to test need to be specified explicitly here.
 That's important for the dynamic test creation part. Also, every test name NEEDS to start with "test",
-since im using the built in unittest framework and it will only run tests named "test_...".
+since im using the built-in unittest framework, and it will only run tests named "test_...".
 
 I then make a time complexity test file like so:
 ```
@@ -180,7 +180,7 @@ if __name__ == '__main__':
     dynamically_generate_tests(functionality_test_data, fraudulent_notifications)
     run_dynamic_tests()
 ```
-And VOILA! I now simply run the file and a full, data driven suite of tests is automatically 
+And Voilà! I now simply run the file, and a full, data driven suite of tests is automatically 
 generated and run, with full text output in you console!
 
 For the time complexity tests, I like to combine the functional and time complexity tests into one
@@ -210,16 +210,16 @@ if __name__ == '__main__':
 ```
 Here I set it to 3 seconds!
 
-And, of course, you can time AND have a timeout:
+Of course, you can time AND have a timeout:
 ```
 if __name__ == "__main__":
     functionality_test_data.update(time_complexity_test_data)
     dynamically_generate_tests(functionality_test_data, fraudulent_notifications, timed=True, timeout=3)
     run_dynamic_tests()
 ```
-#### Example (if you want to you use whats already here)
+#### Example (if you want to you use what's already here)
  Simply use the structure above that I already have for each problem! I have solutions for
- all of the problems here, so feel free to garner some insight from them if you get stuck.
+ all the problems here, so feel free to garner some insight from them if you get stuck.
 
 Feel free to shoot me any questions regarding this repo via my LinkedIn [here](https://www.linkedin.com/in/ricardo-carrillo-velasco-6a1611174/)
 
