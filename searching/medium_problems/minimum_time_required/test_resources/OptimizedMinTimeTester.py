@@ -5,7 +5,7 @@ from test_utilities.time_complexity_file_processing_functions import get_console
 from test_utilities.time_complexity_file_processing_functions import process_test_file_where_single_line_is_an_int_array
 from searching.medium_problems.minimum_time_required.tests.BruteForceMinTimeRequiredTester import \
     BruteForceMinTimeRequiredTester
-from searching.medium_problems.minimum_time_required.optimized_min_time_required import optimized_min_time
+from searching.medium_problems.minimum_time_required.optimal import optimized_min_time
 
 current_path = os.path.dirname(__file__)
 test_resources_path = current_path + "/test_resources/"

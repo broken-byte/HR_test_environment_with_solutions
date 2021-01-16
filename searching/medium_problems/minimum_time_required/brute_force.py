@@ -1,6 +1,8 @@
+from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
+from searching.medium_problems.minimum_time_required.tests.functionality_test_data import functionality_test_data
 
 
-def min_time_brute_force(machines: list, goal: int) -> int:
+def min_time(machines: list, goal: int) -> int:
     factory_floor: list = []
     for machine_production_rate in machines:
         machine = Machine(machine_production_rate)
@@ -38,3 +40,8 @@ class Machine:
             collected_items = self.items_produced
         self.items_produced = 0
         return collected_items
+
+
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, min_time)
+    run_dynamic_tests()
