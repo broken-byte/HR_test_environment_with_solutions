@@ -1,5 +1,7 @@
-from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
-from searching.medium_problems.minimum_time_required.tests.functionality_test_data import functionality_test_data
+from test_utilities.dynamic_test_creator import \
+    dynamically_generate_tests, run_dynamic_tests
+from searching.medium_problems.minimum_time_required.test_resources.functionality_test_data import \
+    functionality_test_data
 
 
 def min_time(machines: list, goal: int) -> int:
