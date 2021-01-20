@@ -1,6 +1,9 @@
+from test_utilities.dynamic_test_creator import \
+    dynamically_generate_tests, run_dynamic_tests
+from searching.medium_problems.ice_cream_parlor.test_resources.functionality_test_data import functionality_test_data
 
 
-def what_flavors(trips: list) -> list:
+def optimal(trips: list) -> list:
     flavor_pairs: list = []
     for trip in trips:
         money: int = trip["money"]
@@ -20,3 +23,8 @@ def get_optimal_ice_cream_purchases(money: int, cost: list) -> list:
             optimal_flavor_choices.append(index + 1)
             return sorted(optimal_flavor_choices)
         hash_table[ice_cream_price] = index + 1
+
+
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, optimal, timed=True)
+    run_dynamic_tests()

@@ -53,3 +53,7 @@ The third line contains n space-separated integers denoting the cost[i].
 Print two space-separated integers denoting the respective indices for the 
 two distinct flavors they choose to purchase in ascending order. Recall that 
 each ice cream flavor has a unique ID number in the inclusive range from 1 to |cost|.
+
+##### A Note about the File Structure...
+I omitted a time complexity test suite since the test data was so convoluted on HR that
+I took a HARD pass. The optimal solution still runs lightning fast though, I promise :)
