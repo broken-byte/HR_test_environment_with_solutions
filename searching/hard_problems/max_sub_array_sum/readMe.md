@@ -1,3 +1,7 @@
+## Max Sub Array Sum
+
+[Max SubArray Sum HackerRank Link](https://www.hackerrank.com/challenges/maximum-subarray-sum/problem)
+
 We define the following:
 
 - A sub array of array "a" of length "n" is a contiguous segment from 
@@ -9,7 +13,7 @@ Given an "n" element array of integers, "a", and an integer, "m", determine
 the maximum value of the sum of any of its sub arrays modulo "m". For example, 
 Assume a = [1, 2, 3] and m = 2. The following table lists all sub arrays and 
 their moduli:
-![Example](images/example.png)
+![Example](example.png)
 The maximum modulus is 1.
 ###Function Description
 Complete the maximumSum function in the editor below. It should return a long 
@@ -32,3 +36,7 @@ of a and the modulo divisor.
 
 ###Output Format
 For each query, return the maximum value of sub array % m as a long integer.
+
+###Caveats
+I have not created an optimal solution to this problem :/ I'll get to it eventually!
+Thanks for your patience :) 
