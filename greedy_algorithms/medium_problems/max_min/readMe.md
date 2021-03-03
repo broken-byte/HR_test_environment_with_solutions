@@ -1,10 +1,6 @@
-## Max Min
+# Max Min
 
--------
-
-[Max Min HackerRank Link](
-    https://www.hackerrank.com/challenges/angry-children/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=greedy-algorithms
-    )
+[Max Min HackerRank Link](https://www.hackerrank.com/challenges/angry-children/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=greedy-algorithms)
 
 You will be given a list of integers, arr, and a single integer k. You must create an array of length k from elements 
 of arr such that its unfairness is minimized. Call that array subarr. Unfairness of an array is calculated as:
@@ -20,7 +16,7 @@ Testing for all pairs, the solution [1, 2] provides the minimum unfairness.
 
 Note: Integers in  may not be unique.
 
-### Function Description
+###Function Description
 
 Complete the maxMin function in the editor below. It must return an integer that denotes the minimum possible value of 
 unfairness.
