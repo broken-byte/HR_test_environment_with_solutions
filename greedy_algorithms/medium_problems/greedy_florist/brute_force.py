@@ -2,9 +2,12 @@ from math import ceil
 
 from greedy_algorithms.medium_problems.greedy_florist.classes.Friend import Friend
 from greedy_algorithms.medium_problems.greedy_florist.classes.GreedyFlowerShop import GreedyFlowerShop
+from test_utilities.dynamic_test_creator import dynamically_generate_tests, run_dynamic_tests
+from greedy_algorithms.medium_problems.greedy_florist.test_resources.functionality_test_data import \
+    functionality_test_data
 
 
-def get_minimum_cost_brute_force_approach(k: int, c: list) -> int:
+def brute_force(k: int, c: list) -> int:
     greedy_flower_shop: GreedyFlowerShop = GreedyFlowerShop(k, c)
     friends: list = create_friend_list_of_size(k)
     number_of_friend_passes: int = ceil(len(c) / k)
@@ -24,3 +27,9 @@ def create_friend_list_of_size(k: int):
         friend: Friend = Friend()
         friends.append(friend)
     return friends
+
+
+if __name__ == '__main__':
+    dynamically_generate_tests(functionality_test_data, brute_force)
+    run_dynamic_tests()
+
