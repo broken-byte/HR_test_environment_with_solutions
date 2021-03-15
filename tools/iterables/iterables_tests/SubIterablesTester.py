@@ -2,7 +2,8 @@ import unittest
 
 from tools.iterables.sub_iterables import \
     get_number_of_sub_arrays_in_an_iterable, \
-    generate_all_sub_sequences_of_an_iterable
+    generate_all_sub_sequences_of_an_iterable, \
+    generate_all_sub_arrays_of_an_iterable
 
 
 class SubIterablesTester(unittest.TestCase):
@@ -79,6 +80,36 @@ class SubIterablesTester(unittest.TestCase):
             [1, 2, 3]
         ]
         actual: list = generate_all_sub_sequences_of_an_iterable(mock_list)
+        self.assertEqual(expected, actual)
+
+    def test_that_sub_array_generator_can_generate_sub_arrays_for_lists(self):
+        mock_list: list = [1, 2, 3]
+        expected: list = [
+            [1],
+            [1, 2],
+            [1, 2, 3],
+            [2],
+            [2, 3],
+            [3]
+        ]
+        actual: list = generate_all_sub_arrays_of_an_iterable(mock_list)
+        self.assertEqual(expected, actual)
+
+    def test_that_sub_array_generator_can_generate_sub_arrays_for_strings(self):
+        mock_list: str = "ABCD"
+        expected: list = [
+            'A',
+            'AB',
+            'ABC',
+            'ABCD',
+            'B',
+            'BC',
+            'BCD',
+            'C',
+            'CD',
+            'D'
+        ]
+        actual: list = generate_all_sub_arrays_of_an_iterable(mock_list)
         self.assertEqual(expected, actual)
 
 
