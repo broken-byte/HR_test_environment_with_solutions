@@ -4,7 +4,7 @@ from searching.medium_problems.pairs.test_resources.functionality_test_data impo
 from searching.medium_problems.pairs.test_resources.time_complexity_test_data import time_complexity_test_data
 
 
-def pairs_optimized(k: int, arr: list) -> int:
+def optimal(k: int, arr: list) -> int:
     k_difference_counter = KDifferenceCounter(k, arr)
     k_difference_counter.count_k_differences()
     return k_difference_counter.count
@@ -12,5 +12,5 @@ def pairs_optimized(k: int, arr: list) -> int:
 
 if __name__ == '__main__':
     functionality_test_data.update(time_complexity_test_data)
-    dynamically_generate_tests(functionality_test_data, pairs_optimized, timed=True)
+    dynamically_generate_tests(functionality_test_data, optimal, timed=True)
     run_dynamic_tests()
