@@ -16,5 +16,3 @@ time_complexity_test_data = {
         "expected": 494906
     }
 }
-
-# ("time_complexity_test_0.txt", 494906)
